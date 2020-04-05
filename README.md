@@ -1,4 +1,4 @@
-# hexagonal-spring-boot-maven
+# hexagonal-spring-boot-maven [![Build Status](https://travis-ci.com/devs-from-matrix/hexagonal-spring-boot-maven.svg?branch=master)](https://travis-ci.com/devs-from-matrix/hexagonal-spring-boot-maven) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/c4a6502171544f3a919bcdce35cb50b1)](https://www.codacy.com/gh/devs-from-matrix/hexagonal-spring-boot-maven?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=devs-from-matrix/hexagonal-spring-boot-maven&amp;utm_campaign=Badge_Grade)
 
 This project is a template reference for hexagonal spring boot. This repository is to be used by [app-generator](https://github.com/devs-from-matrix/app-generator) for scaffolding.
 
