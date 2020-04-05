@@ -1,0 +1,12 @@
+language: java
+jdk:
+  - openjdk11
+dist:
+  trusty
+notifications:
+  email: false
+# only build for commits/pr targeted to master branch
+# this avoid duplicate builds for push+PR
+branches:
+  only:
+    - master

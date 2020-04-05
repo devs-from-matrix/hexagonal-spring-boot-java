@@ -1,18 +1,27 @@
-# Title
+# hexagonal-spring-boot-maven
 
-<!-- 
-this project was generated with https://github.com/devs-from-matrix/basic-template-repository. 
--->
+This project is a template reference for hexagonal spring boot. This repository is to be used by [app-generator](https://github.com/devs-from-matrix/app-generator) for scaffolding.
 
-## [Documentation](https://devs-from-matrix.github.io/basic-template-repository/)
+The keywords of the app-generators are the following
+
+- `packageName` - to rename the package names
+- `artifactName` - to rename the artifact id
+- `Example` - to rename class, variables 
+
+Use it with caution as these will be used by the app-generator to replace them with domain specific name in the scaffold code. 
+
+## Pre-requisite 
+
+- maven
+- open jdk 11
 
 ## How to build ?
 
-<!-- mention the steps for building this project -->
+`mvn clean install`
 
 ## How to start ?
 
-<!-- mention the steps for starting or serving this project -->
+`cd bootstrap && mvn spring-boot:run`
 
 ## Contribution guidelines
 
