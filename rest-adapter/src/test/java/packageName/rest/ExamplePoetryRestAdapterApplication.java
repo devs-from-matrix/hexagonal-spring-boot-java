@@ -10,10 +10,10 @@ import packageName.domain.port.RequestExample;
 @ComponentScan(basePackages = "packageName")
 public class ExamplePoetryRestAdapterApplication {
 
+  @MockBean
+  private RequestExample requestExample;
+
   public static void main(String[] args) {
     SpringApplication.run(ExamplePoetryRestAdapterApplication.class, args);
   }
-
-  @MockBean
-  private RequestExample requestExample;
 }
