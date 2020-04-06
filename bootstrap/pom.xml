@@ -14,12 +14,6 @@
     <dependency>
       <groupId>org.dfm</groupId>
       <artifactId>rest-adapter</artifactId>
-      <exclusions>
-        <exclusion>
-          <artifactId>classmate</artifactId>
-          <groupId>com.fasterxml</groupId>
-        </exclusion>
-      </exclusions>
     </dependency>
     <!-- domain -->
     <dependency>

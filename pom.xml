@@ -53,6 +53,12 @@
         <groupId>org.dfm</groupId>
         <artifactId>rest-adapter</artifactId>
         <version>${project.version}</version>
+        <exclusions>
+          <exclusion>
+            <artifactId>classmate</artifactId>
+            <groupId>com.fasterxml</groupId>
+          </exclusion>
+        </exclusions>
       </dependency>
       <dependency>
         <groupId>org.dfm</groupId>
@@ -60,7 +66,6 @@
         <version>${project.version}</version>
       </dependency>
       <!-- Frameworks & Libraries -->
-      <!-- left adapter -->
       <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-web</artifactId>
@@ -69,6 +74,17 @@
           <exclusion>
             <artifactId>slf4j-api</artifactId>
             <groupId>org.slf4j</groupId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-data-jpa</artifactId>
+        <version>${spring-boot.version}</version>
+        <exclusions>
+          <exclusion>
+            <artifactId>byte-buddy</artifactId>
+            <groupId>net.bytebuddy</groupId>
           </exclusion>
         </exclusions>
       </dependency>
@@ -155,6 +171,12 @@
         <groupId>org.hsqldb</groupId>
         <artifactId>hsqldb</artifactId>
         <version>${hsqldb.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>net.bytebuddy</groupId>
+        <artifactId>byte-buddy</artifactId>
+        <version>${byte-buddy.version}</version>
       </dependency>
       <!-- Test -->
       <dependency>
@@ -254,11 +276,6 @@
           <groupId>org.junit.jupiter</groupId>
         </exclusion>
       </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>net.bytebuddy</groupId>
-      <artifactId>byte-buddy</artifactId>
-      <version>${byte-buddy.version}</version>
     </dependency>
     <!-- Cucumber dependencies -->
     <dependency>
