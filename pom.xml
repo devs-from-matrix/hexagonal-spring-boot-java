@@ -28,6 +28,7 @@
     <cukedoctor-maven-plugin.version>1.2.1</cukedoctor-maven-plugin.version>
     <maven-surefire-plugin.version>3.0.0-M4</maven-surefire-plugin.version>
     <maven-enforcer-plugin>3.0.0-M3</maven-enforcer-plugin>
+    <arch-unit-maven-plugin.version>2.4.0</arch-unit-maven-plugin.version>
   </properties>
   <modules>
     <module>domain</module>
@@ -352,7 +353,7 @@
       <plugin>
         <groupId>com.societegenerale.commons</groupId>
         <artifactId>arch-unit-maven-plugin</artifactId>
-        <version>2.4.0</version>
+        <version>${arch-unit-maven-plugin.version}</version>
         <configuration>
           <projectPath>${project.basedir}/target</projectPath>
           <rules>
