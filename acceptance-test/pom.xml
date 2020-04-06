@@ -13,12 +13,6 @@
     <dependency>
       <groupId>org.dfm</groupId>
       <artifactId>rest-adapter</artifactId>
-      <exclusions>
-        <exclusion>
-          <artifactId>classmate</artifactId>
-          <groupId>com.fasterxml</groupId>
-        </exclusion>
-      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.dfm</groupId>
@@ -33,6 +27,10 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
     </dependency>
+    <dependency>
+      <groupId>net.bytebuddy</groupId>
+      <artifactId>byte-buddy</artifactId>
+    </dependency>
   </dependencies>
   <build>
     <plugins>
@@ -42,8 +40,8 @@
         <version>${cukedoctor-maven-plugin.version}</version>
         <configuration>
           <featuresDir>target/cucumber</featuresDir>
-          <outputFileName>ExamplePoetry</outputFileName>
-          <documentTitle>Example Poetry - Living Documentation</documentTitle>
+          <outputFileName>Example</outputFileName>
+          <documentTitle>Example - Living Documentation</documentTitle>
           <docVersion>${project.version}</docVersion>
           <toc>center</toc>
         </configuration>
