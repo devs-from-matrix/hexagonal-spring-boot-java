@@ -349,6 +349,37 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <groupId>com.societegenerale.commons</groupId>
+        <artifactId>arch-unit-maven-plugin</artifactId>
+        <version>2.4.0</version>
+        <configuration>
+          <projectPath>${project.basedir}/target</projectPath>
+          <rules>
+            <preConfiguredRules>
+              <rule>com.societegenerale.commons.plugin.rules.NoStandardStreamRuleTest</rule>
+              <rule>com.societegenerale.commons.plugin.rules.NoJunitAssertRuleTest</rule>
+              <rule>com.societegenerale.commons.plugin.rules.NoJodaTimeRuleTest</rule>
+              <rule>com.societegenerale.commons.plugin.rules.NoJavaUtilDateRuleTest</rule>
+              <rule>com.societegenerale.commons.plugin.rules.NoPowerMockRuleTest</rule>
+              <rule>com.societegenerale.commons.plugin.rules.NoPrefixForInterfacesRuleTest</rule>
+              <rule>com.societegenerale.commons.plugin.rules.NoPublicFieldRuleTest</rule>
+              <rule>com.societegenerale.commons.plugin.rules.NoTestIgnoreRuleTest</rule>
+              <rule>com.societegenerale.commons.plugin.rules.NoTestIgnoreWithoutCommentRuleTest</rule>
+              <rule>com.societegenerale.commons.plugin.rules.NoInjectedFieldTest</rule>
+              <rule>com.societegenerale.commons.plugin.rules.NoAutowiredFieldTest</rule>
+            </preConfiguredRules>
+          </rules>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>test</phase>
+            <goals>
+              <goal>arch-test</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 </project>
