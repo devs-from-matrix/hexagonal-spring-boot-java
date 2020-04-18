@@ -1,7 +1,7 @@
-package packageName.domain.port;
+package packagename.domain.port;
 
 import java.util.List;
-import packageName.domain.model.Example;
+import packagename.domain.model.Example;
 
 public interface ObtainExample {
 

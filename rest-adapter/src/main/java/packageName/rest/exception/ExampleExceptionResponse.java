@@ -1,4 +1,4 @@
-package packageName.rest.exception;
+package packagename.rest.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,6 +1,6 @@
-package packageName.domain.port;
+package packagename.domain.port;
 
-import packageName.domain.model.ExampleInfo;
+import packagename.domain.model.ExampleInfo;
 
 public interface RequestExample {
 

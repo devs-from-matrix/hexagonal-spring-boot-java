@@ -1,4 +1,4 @@
-package packageName.cucumber;
+package packagename.cucumber;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
@@ -17,11 +17,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import packageName.ExampleE2EApplication;
-import packageName.domain.model.Example;
-import packageName.domain.model.ExampleInfo;
-import packageName.repository.dao.ExampleDao;
-import packageName.repository.entity.ExampleEntity;
+import packagename.ExampleE2EApplication;
+import packagename.domain.model.Example;
+import packagename.domain.model.ExampleInfo;
+import packagename.repository.dao.ExampleDao;
+import packagename.repository.entity.ExampleEntity;
 
 
 @ExtendWith(SpringExtension.class)

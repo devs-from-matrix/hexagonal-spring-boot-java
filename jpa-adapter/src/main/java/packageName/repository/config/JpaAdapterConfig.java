@@ -1,16 +1,16 @@
-package packageName.repository.config;
+package packagename.repository.config;
 
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import packageName.domain.port.ObtainExample;
-import packageName.repository.ExampleRepository;
-import packageName.repository.dao.ExampleDao;
+import packagename.domain.port.ObtainExample;
+import packagename.repository.ExampleRepository;
+import packagename.repository.dao.ExampleDao;
 
 @Configuration
-@EntityScan("packageName.repository.entity")
-@EnableJpaRepositories("packageName.repository.dao")
+@EntityScan("packagename.repository.entity")
+@EnableJpaRepositories("packagename.repository.dao")
 public class JpaAdapterConfig {
 
   @Bean

@@ -1,11 +1,11 @@
-package packageName.repository;
+package packagename.repository;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import packageName.domain.model.Example;
-import packageName.domain.port.ObtainExample;
-import packageName.repository.dao.ExampleDao;
-import packageName.repository.entity.ExampleEntity;
+import packagename.domain.model.Example;
+import packagename.domain.port.ObtainExample;
+import packagename.repository.dao.ExampleDao;
+import packagename.repository.entity.ExampleEntity;
 
 public class ExampleRepository implements ObtainExample {
 

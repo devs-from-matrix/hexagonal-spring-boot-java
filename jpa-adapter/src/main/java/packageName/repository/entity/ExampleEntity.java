@@ -1,4 +1,4 @@
-package packageName.repository.entity;
+package packagename.repository.entity;
 
 import static javax.persistence.GenerationType.AUTO;
 
@@ -11,7 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import packageName.domain.model.Example;
+import packagename.domain.model.Example;
 
 @Table(name = "T_EXAMPLE")
 @Entity
