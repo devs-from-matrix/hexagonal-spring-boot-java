@@ -1,11 +1,11 @@
-package packageName.repository;
+package packagename.repository;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
-import packageName.domain.port.ObtainExample;
-import packageName.repository.dao.ExampleDao;
+import packagename.domain.port.ObtainExample;
+import packagename.repository.dao.ExampleDao;
 
 @SpringBootApplication
 public class ExampleJpaAdapterApplication {

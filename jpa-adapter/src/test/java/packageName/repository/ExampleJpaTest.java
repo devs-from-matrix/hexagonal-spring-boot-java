@@ -1,4 +1,4 @@
-package packageName.repository;
+package packagename.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -10,8 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import packageName.domain.model.Example;
-import packageName.domain.port.ObtainExample;
+import packagename.domain.model.Example;
+import packagename.domain.port.ObtainExample;
 
 @ExtendWith(SpringExtension.class)
 @DataJpaTest

@@ -4,7 +4,7 @@ This project is a template reference for hexagonal spring boot. This repository 
 
 The keywords of the app-generators are the following
 
-- `packageName` - to rename the package names
+- `packagename` - to rename the package names
 - `artifactName` - to rename the artifact id
 - `Example` - to rename class, variables 
 

@@ -1,4 +1,4 @@
-package packageName.rest;
+package packagename.rest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
@@ -17,9 +17,9 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import packageName.domain.model.Example;
-import packageName.domain.model.ExampleInfo;
-import packageName.domain.port.RequestExample;
+import packagename.domain.model.Example;
+import packagename.domain.model.ExampleInfo;
+import packagename.domain.port.RequestExample;
 
 @ExtendWith(MockitoExtension.class)
 @SpringBootTest(classes = ExamplePoetryRestAdapterApplication.class, webEnvironment = RANDOM_PORT)

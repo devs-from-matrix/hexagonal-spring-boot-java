@@ -1,14 +1,14 @@
-package packageName;
+package packagename;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
-import packageName.domain.ExampleDomain;
-import packageName.domain.port.ObtainExample;
-import packageName.domain.port.RequestExample;
-import packageName.repository.config.JpaAdapterConfig;
+import packagename.domain.ExampleDomain;
+import packagename.domain.port.ObtainExample;
+import packagename.domain.port.RequestExample;
+import packagename.repository.config.JpaAdapterConfig;
 
 @SpringBootApplication
 public class ExampleE2EApplication {

@@ -1,4 +1,4 @@
-package packageName;
+package packagename;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -11,11 +11,11 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import packageName.domain.ExampleDomain;
-import packageName.domain.model.Example;
-import packageName.domain.model.ExampleInfo;
-import packageName.domain.port.ObtainExample;
-import packageName.domain.port.RequestExample;
+import packagename.domain.ExampleDomain;
+import packagename.domain.model.Example;
+import packagename.domain.model.ExampleInfo;
+import packagename.domain.port.ObtainExample;
+import packagename.domain.port.RequestExample;
 
 @ExtendWith(MockitoExtension.class)
 @RunWith(JUnitPlatform.class)
