@@ -24,6 +24,7 @@
     <commons-lang3.version>3.10</commons-lang3.version>
     <hsqldb.version>2.5.0</hsqldb.version>
     <byte-buddy.version>1.10.9</byte-buddy.version>
+    <jakarta.xml.bind.version>2.3.3</jakarta.xml.bind.version>
     <!-- plugins -->
     <cukedoctor-maven-plugin.version>1.2.1</cukedoctor-maven-plugin.version>
     <maven-surefire-plugin.version>3.0.0-M4</maven-surefire-plugin.version>
@@ -156,6 +157,10 @@
             <artifactId>commons-lang3</artifactId>
             <groupId>org.apache.commons</groupId>
           </exclusion>
+          <exclusion>
+            <artifactId>jakarta.activation-api</artifactId>
+            <groupId>jakarta.activation</groupId>
+          </exclusion>
         </exclusions>
       </dependency>
       <dependency>
@@ -211,7 +216,17 @@
             <artifactId>slf4j-api</artifactId>
             <groupId>org.slf4j</groupId>
           </exclusion>
+          <exclusion>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <groupId>jakarta.xml.bind</groupId>
+          </exclusion>
         </exclusions>
+      </dependency>
+      <dependency>
+        <groupId>jakarta.xml.bind</groupId>
+        <artifactId>jakarta.xml.bind-api</artifactId>
+        <version>${jakarta.xml.bind.version}</version>
+        <scope>test</scope>
       </dependency>
     </dependencies>
   </dependencyManagement>
