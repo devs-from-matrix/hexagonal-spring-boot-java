@@ -25,6 +25,7 @@
     <hsqldb.version>2.5.0</hsqldb.version>
     <byte-buddy.version>1.10.9</byte-buddy.version>
     <jakarta.xml.bind.version>2.3.3</jakarta.xml.bind.version>
+    <jakarta.activation>1.2.2</jakarta.activation>
     <!-- plugins -->
     <cukedoctor-maven-plugin.version>1.2.1</cukedoctor-maven-plugin.version>
     <maven-surefire-plugin.version>3.0.0-M4</maven-surefire-plugin.version>
@@ -164,6 +165,11 @@
         </exclusions>
       </dependency>
       <dependency>
+        <groupId>jakarta.activation</groupId>
+        <artifactId>jakarta.activation-api</artifactId>
+        <version>${jakarta.activation}</version>
+      </dependency>
+      <dependency>
         <artifactId>classgraph</artifactId>
         <groupId>io.github.classgraph</groupId>
         <version>${classgraph.version}</version>
@@ -226,7 +232,6 @@
         <groupId>jakarta.xml.bind</groupId>
         <artifactId>jakarta.xml.bind-api</artifactId>
         <version>${jakarta.xml.bind.version}</version>
-        <scope>test</scope>
       </dependency>
     </dependencies>
   </dependencyManagement>
