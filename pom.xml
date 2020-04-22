@@ -27,7 +27,7 @@
     <jakarta.xml.bind.version>2.3.3</jakarta.xml.bind.version>
     <jakarta.activation>1.2.2</jakarta.activation>
     <!-- plugins -->
-    <cukedoctor-maven-plugin.version>1.2.1</cukedoctor-maven-plugin.version>
+    <cukedoctor-maven-plugin.version>2.0</cukedoctor-maven-plugin.version>
     <maven-surefire-plugin.version>3.0.0-M4</maven-surefire-plugin.version>
     <maven-enforcer-plugin>3.0.0-M3</maven-enforcer-plugin>
     <arch-unit-maven-plugin.version>2.4.0</arch-unit-maven-plugin.version>
