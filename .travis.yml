@@ -7,6 +7,8 @@ dist:
 before_install:
   - unset _JAVA_OPTIONS
   - export PATH=$JAVA_HOME/bin:$PATH
+script:
+  - java -version
 notifications:
   email: false
 # only build for commits/pr targeted to master branch
