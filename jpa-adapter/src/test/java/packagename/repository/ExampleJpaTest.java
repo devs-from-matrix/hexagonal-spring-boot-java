@@ -3,6 +3,7 @@ package packagename.repository;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
+import java.util.Optional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -28,12 +29,43 @@ public class ExampleJpaTest {
 
   @Sql(scripts = {"/sql/data.sql"})
   @Test
-  @DisplayName("should give me examples when asked for examples from database")
-  public void shouldGiveMeExamplesWhenAskedForExamples() {
+  @DisplayName("given examples exist in database when asked should return all examples from database")
+  public void shouldGiveMeExamplesWhenAskedGivenExampleExistsInDatabase() {
     // Given from @Sql
     // When
     List<Example> examples = obtainExample.getAllExamples();
     // Then
     assertThat(examples).isNotNull().extracting("description").contains("Twinkle twinkle little star");
+  }
+
+  @Test
+  @DisplayName("given no examples exists in database when asked should return empty")
+  public void shouldGiveNoExampleWhenAskedGivenExamplesDoNotExistInDatabase() {
+    // When
+    List<Example> examples = obtainExample.getAllExamples();
+    // Then
+    assertThat(examples).isNotNull().isEmpty();
+  }
+
+  @Sql(scripts = {"/sql/data.sql"})
+  @Test
+  @DisplayName("given examples exists in database when asked for example by id should return the example")
+  public void shouldGiveTheExampleWhenAskedByIdGivenThatExampleByThatIdExistsInDatabase() {
+    // Given from @Sql
+    // When
+    Optional<Example> example = obtainExample.getExampleByCode(1L);
+    // Then
+    assertThat(example).isNotNull().isNotEmpty().get().isEqualTo(Example.builder().code(1L).description("Twinkle twinkle little star").build());
+  }
+
+  @Sql(scripts = {"/sql/data.sql"})
+  @Test
+  @DisplayName("given examples exists in database when asked for example by id that does not exist should give empty")
+  public void shouldGiveNoExampleWhenAskedByIdGivenThatExampleByThatIdDoesNotExistInDatabase() {
+    // Given from @Sql
+    // When
+    Optional<Example> example = obtainExample.getExampleByCode(-1000L);
+    // Then
+    assertThat(example).isEmpty();
   }
 }

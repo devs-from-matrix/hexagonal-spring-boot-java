@@ -17,9 +17,11 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import packagename.domain.exception.ExampleNotFoundException;
 import packagename.domain.model.Example;
 import packagename.domain.model.ExampleInfo;
 import packagename.domain.port.RequestExample;
+import packagename.rest.exception.ExampleExceptionResponse;
 
 @ExtendWith(MockitoExtension.class)
 @SpringBootTest(classes = ExamplePoetryRestAdapterApplication.class, webEnvironment = RANDOM_PORT)
@@ -45,8 +47,9 @@ public class ExampleResourceTest {
   @DisplayName("should give examples when asked for examples with the support of domain stub")
   public void obtainExamplesFromDomainStub() {
     // Given
-    Example example = Example.builder().id(1L).description("Johnny Johnny Yes Papa !!").build();
-    Mockito.lenient().when(requestExample.getExamples()).thenReturn(ExampleInfo.builder().examples(List.of(example)).build());
+    Example example = Example.builder().code(1L).description("Johnny Johnny Yes Papa !!").build();
+    Mockito.lenient().when(requestExample.getExamples())
+        .thenReturn(ExampleInfo.builder().examples(List.of(example)).build());
     // When
     String url = LOCALHOST + port + API_URI;
     ResponseEntity<ExampleInfo> responseEntity = restTemplate.getForEntity(url, ExampleInfo.class);
@@ -55,5 +58,41 @@ public class ExampleResourceTest {
     assertThat(responseEntity.getBody()).isNotNull();
     assertThat(responseEntity.getBody().getExamples()).isNotEmpty().extracting("description")
         .contains("Johnny Johnny Yes Papa !!");
+  }
+
+  @Test
+  @DisplayName("should give the example when asked for an example by code with the support of domain stub")
+  public void obtainExampleByCodeFromDomainStub() {
+    // Given
+    Long code = 1L;
+    String description = "Johnny Johnny Yes Papa !!";
+    Example example = Example.builder().code(code).description(description).build();
+    Mockito.lenient().when(requestExample.getExampleByCode(code)).thenReturn(example);
+    // When
+    String url = LOCALHOST + port + API_URI + "/" + code;
+    ResponseEntity<Example> responseEntity = restTemplate.getForEntity(url, Example.class);
+    // Then
+    assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
+    assertThat(responseEntity.getBody()).isNotNull();
+    assertThat(responseEntity.getBody()).isEqualTo(example);
+  }
+
+  @Test
+  @DisplayName("should give exception when asked for an example by code that does not exists with the support of domain stub")
+  public void shouldGiveExceptionWhenAskedForAnExampleByCodeFromDomainStub() {
+    // Given
+    Long code = -1000L;
+    Mockito.lenient().when(requestExample.getExampleByCode(code)).thenThrow(new
+        ExampleNotFoundException(code));
+    // When
+    String url = LOCALHOST + port + API_URI + "/" + code;
+    ResponseEntity<ExampleExceptionResponse> responseEntity = restTemplate
+        .getForEntity(url, ExampleExceptionResponse.class);
+    // Then
+    assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+    assertThat(responseEntity.getBody()).isNotNull();
+    assertThat(responseEntity.getBody()).isEqualTo(ExampleExceptionResponse.builder()
+        .message("Example with code " + code + " does not exist").path(API_URI + "/" + code)
+        .build());
   }
 }

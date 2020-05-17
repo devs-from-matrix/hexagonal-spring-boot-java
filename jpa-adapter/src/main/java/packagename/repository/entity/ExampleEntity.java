@@ -1,10 +1,9 @@
 package packagename.repository.entity;
 
-import static javax.persistence.GenerationType.AUTO;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -22,13 +21,17 @@ import packagename.domain.model.Example;
 public class ExampleEntity {
 
   @Id
-  @GeneratedValue(strategy = AUTO)
-  private Long id;
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_T_EXAMPLE")
+  @Column(name = "TECH_ID")
+  private Long techId;
+
+  @Column(name = "CODE")
+  private Long code;
 
   @Column(name = "DESCRIPTION")
   private String description;
 
   public Example toModel() {
-    return Example.builder().id(id).description(description).build();
+    return Example.builder().code(code).description(description).build();
   }
 }

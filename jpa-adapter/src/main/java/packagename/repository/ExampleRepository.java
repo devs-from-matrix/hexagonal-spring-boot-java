@@ -1,6 +1,7 @@
 package packagename.repository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import packagename.domain.model.Example;
 import packagename.domain.port.ObtainExample;
@@ -18,5 +19,11 @@ public class ExampleRepository implements ObtainExample {
   @Override
   public List<Example> getAllExamples() {
     return exampleDao.findAll().stream().map(ExampleEntity::toModel).collect(Collectors.toList());
+  }
+
+  @Override
+  public Optional<Example> getExampleByCode(Long code) {
+    Optional<ExampleEntity> exampleEntity = exampleDao.findByCode(code);
+    return exampleEntity.map(ExampleEntity::toModel);
   }
 }
