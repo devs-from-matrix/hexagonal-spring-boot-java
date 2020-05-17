@@ -61,9 +61,7 @@ public class AcceptanceTest {
     // Stub
     Long code = 1L;
     String description = "I want to sleep\\r\\nSwat the flies\\r\\nSoftly, please.\\r\\n\\r\\n-- Masaoka Shiki (1867-1902)";
-    Example expectedExample = Example.builder().code(1L).description(
-        "I want to sleep\r\nSwat the flies\r\nSoftly, please.\r\n\r\n-- Masaoka Shiki (1867-1902)")
-        .build();
+    Example expectedExample = Example.builder().code(code).description(description).build();
     Mockito.lenient().when(obtainExample.getExampleByCode(code))
         .thenReturn(Optional.of(expectedExample));
     // When
