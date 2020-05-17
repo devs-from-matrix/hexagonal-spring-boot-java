@@ -24,7 +24,7 @@ import packagename.domain.port.RequestExample;
 import packagename.rest.exception.ExampleExceptionResponse;
 
 @ExtendWith(MockitoExtension.class)
-@SpringBootTest(classes = ExamplePoetryRestAdapterApplication.class, webEnvironment = RANDOM_PORT)
+@SpringBootTest(classes = ExampleRestAdapterApplication.class, webEnvironment = RANDOM_PORT)
 @EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class})
 public class ExampleResourceTest {
 

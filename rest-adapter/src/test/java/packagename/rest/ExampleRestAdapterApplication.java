@@ -8,12 +8,12 @@ import packagename.domain.port.RequestExample;
 
 @SpringBootApplication
 @ComponentScan(basePackages = "packagename")
-public class ExamplePoetryRestAdapterApplication {
+public class ExampleRestAdapterApplication {
 
   @MockBean
   private RequestExample requestExample;
 
   public static void main(String[] args) {
-    SpringApplication.run(ExamplePoetryRestAdapterApplication.class, args);
+    SpringApplication.run(ExampleRestAdapterApplication.class, args);
   }
 }
