@@ -1,8 +1,7 @@
 language: java
-jdk:
-  - openjdk11
-dist:
-  trusty
+install: true
+jdk: openjdk11
+dist: xenial
 notifications:
   email: false
 # only build for commits/pr targeted to master branch
@@ -12,3 +11,6 @@ branches:
     - master
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+cache:
+  directories:
+    - $HOME/.m2
