@@ -17,7 +17,7 @@
     <mockito.version>3.3.3</mockito.version>
     <cucumber.version>5.7.0</cucumber.version>
     <lombok.version>1.18.12</lombok.version>
-    <spring-boot.version>2.3.0.RELEASE</spring-boot.version>
+    <spring-boot.version>2.3.1.RELEASE</spring-boot.version>
     <slf4j.version>1.7.30</slf4j.version>
     <springdoc.version>1.4.0</springdoc.version>
     <classgraph.version>4.8.82</classgraph.version>
