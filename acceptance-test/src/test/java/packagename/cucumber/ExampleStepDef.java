@@ -6,17 +6,16 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java8.En;
 import io.cucumber.java8.HookNoArgsBody;
+import io.cucumber.spring.CucumberContextConfiguration;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.boot.test.context.SpringBootContextLoader;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import packagename.ExampleE2EApplication;
 import packagename.domain.model.Example;
@@ -28,7 +27,7 @@ import packagename.rest.exception.ExampleExceptionResponse;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = ExampleE2EApplication.class, webEnvironment = RANDOM_PORT)
-@ContextConfiguration(classes = ExampleE2EApplication.class, loader = SpringBootContextLoader.class)
+@CucumberContextConfiguration
 public class ExampleStepDef implements En {
 
   private static final String LOCALHOST = "http://localhost:";
