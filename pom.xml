@@ -24,7 +24,7 @@
     <commons-lang3.version>3.11</commons-lang3.version>
     <hsqldb.version>2.5.1</hsqldb.version>
     <jakarta.xml.bind.version>2.3.3</jakarta.xml.bind.version>
-    <jakarta.activation>1.2.2</jakarta.activation>
+    <jakarta.activation>2.0.0</jakarta.activation>
     <!-- plugins -->
     <cukedoctor-maven-plugin.version>3.3</cukedoctor-maven-plugin.version>
     <maven-surefire-plugin.version>3.0.0-M4</maven-surefire-plugin.version>
