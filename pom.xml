@@ -396,7 +396,8 @@
               <rule>com.societegenerale.commons.plugin.rules.NoPrefixForInterfacesRuleTest</rule>
               <rule>com.societegenerale.commons.plugin.rules.NoPublicFieldRuleTest</rule>
               <rule>com.societegenerale.commons.plugin.rules.NoTestIgnoreRuleTest</rule>
-              <rule>com.societegenerale.commons.plugin.rules.NoTestIgnoreWithoutCommentRuleTest</rule>
+              <rule>com.societegenerale.commons.plugin.rules.NoTestIgnoreWithoutCommentRuleTest
+              </rule>
               <rule>com.societegenerale.commons.plugin.rules.NoInjectedFieldTest</rule>
               <rule>com.societegenerale.commons.plugin.rules.NoAutowiredFieldTest</rule>
             </preConfiguredRules>
@@ -427,4 +428,11 @@
       </plugins>
     </pluginManagement>
   </build>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>repository.spring.release</id>
+      <name>Spring GA Repository</name>
+      <url>https://repo.spring.io/plugins-release/</url>
+    </pluginRepository>
+  </pluginRepositories>
 </project>
