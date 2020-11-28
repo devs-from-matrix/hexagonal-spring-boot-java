@@ -12,19 +12,18 @@
     <java.version>11</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
+    <spring-boot.version>2.4.0</spring-boot.version>
     <junit.version>5.7.0</junit.version>
     <junit.platform.version>1.7.0</junit.platform.version>
+    <cucumber.version>6.9.0</cucumber.version>
     <mockito.version>3.6.0</mockito.version>
-    <cucumber.version>6.8.1</cucumber.version>
-    <lombok.version>1.18.16</lombok.version>
-    <spring-boot.version>2.3.5.RELEASE</spring-boot.version>
     <slf4j.version>1.7.30</slf4j.version>
-    <springdoc.version>1.4.8</springdoc.version>
-    <classgraph.version>4.8.90</classgraph.version>
+    <springdoc.version>1.5.0</springdoc.version>
     <commons-lang3.version>3.11</commons-lang3.version>
     <hsqldb.version>2.5.1</hsqldb.version>
     <jakarta.xml.bind.version>2.3.3</jakarta.xml.bind.version>
-    <jakarta.activation>2.0.0</jakarta.activation>
+    <jboss-logging.version>3.4.1.Final</jboss-logging.version>
+    <lombok.version>1.18.16</lombok.version>
     <!-- plugins -->
     <cukedoctor-maven-plugin.version>3.3</cukedoctor-maven-plugin.version>
     <maven-surefire-plugin.version>3.0.0-M4</maven-surefire-plugin.version>
@@ -57,12 +56,6 @@
         <groupId>org.dfm</groupId>
         <artifactId>rest-adapter</artifactId>
         <version>${project.version}</version>
-        <exclusions>
-          <exclusion>
-            <artifactId>classmate</artifactId>
-            <groupId>com.fasterxml</groupId>
-          </exclusion>
-        </exclusions>
       </dependency>
       <dependency>
         <groupId>org.dfm</groupId>
@@ -74,17 +67,22 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-web</artifactId>
         <version>${spring-boot.version}</version>
-        <exclusions>
-          <exclusion>
-            <artifactId>slf4j-api</artifactId>
-            <groupId>org.slf4j</groupId>
-          </exclusion>
-        </exclusions>
       </dependency>
       <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-data-jpa</artifactId>
         <version>${spring-boot.version}</version>
+        <exclusions>
+          <exclusion>
+            <artifactId>jboss-logging</artifactId>
+            <groupId>org.jboss.logging</groupId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+      <dependency>
+        <artifactId>jboss-logging</artifactId>
+        <groupId>org.jboss.logging</groupId>
+        <version>${jboss-logging.version}</version>
       </dependency>
       <dependency>
         <artifactId>slf4j-api</artifactId>
@@ -125,53 +123,28 @@
             <groupId>com.fasterxml.jackson.datatype</groupId>
           </exclusion>
           <exclusion>
-            <artifactId>slf4j-api</artifactId>
-            <groupId>org.slf4j</groupId>
-          </exclusion>
-          <exclusion>
-            <artifactId>spring-web</artifactId>
-            <groupId>org.springframework</groupId>
-          </exclusion>
-          <exclusion>
-            <artifactId>spring-webmvc</artifactId>
-            <groupId>org.springframework</groupId>
-          </exclusion>
-          <exclusion>
-            <artifactId>spring-boot-autoconfigure</artifactId>
-            <groupId>org.springframework.boot</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <groupId>jakarta.xml.bind</groupId>
           </exclusion>
           <exclusion>
             <artifactId>snakeyaml</artifactId>
             <groupId>org.yaml</groupId>
           </exclusion>
           <exclusion>
-            <artifactId>classgraph</artifactId>
-            <groupId>io.github.classgraph</groupId>
-          </exclusion>
-          <exclusion>
             <artifactId>commons-lang3</artifactId>
             <groupId>org.apache.commons</groupId>
           </exclusion>
-          <exclusion>
-            <artifactId>jakarta.activation-api</artifactId>
-            <groupId>jakarta.activation</groupId>
-          </exclusion>
         </exclusions>
-      </dependency>
-      <dependency>
-        <groupId>jakarta.activation</groupId>
-        <artifactId>jakarta.activation-api</artifactId>
-        <version>${jakarta.activation}</version>
-      </dependency>
-      <dependency>
-        <artifactId>classgraph</artifactId>
-        <groupId>io.github.classgraph</groupId>
-        <version>${classgraph.version}</version>
       </dependency>
       <dependency>
         <artifactId>commons-lang3</artifactId>
         <groupId>org.apache.commons</groupId>
         <version>${commons-lang3.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>jakarta.xml.bind</groupId>
+        <artifactId>jakarta.xml.bind-api</artifactId>
+        <version>${jakarta.xml.bind.version}</version>
       </dependency>
       <!-- in-memory -->
       <dependency>
@@ -187,39 +160,10 @@
         <scope>test</scope>
         <exclusions>
           <exclusion>
-            <artifactId>junit-jupiter-api</artifactId>
-            <groupId>org.junit.jupiter</groupId>
-          </exclusion>
-          <exclusion>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <groupId>org.junit.jupiter</groupId>
-          </exclusion>
-          <exclusion>
-            <artifactId>junit-vintage-engine</artifactId>
             <groupId>org.junit.vintage</groupId>
-          </exclusion>
-          <exclusion>
-            <artifactId>mockito-core</artifactId>
-            <groupId>org.mockito</groupId>
-          </exclusion>
-          <exclusion>
-            <artifactId>mockito-junit-jupiter</artifactId>
-            <groupId>org.mockito</groupId>
-          </exclusion>
-          <exclusion>
-            <artifactId>slf4j-api</artifactId>
-            <groupId>org.slf4j</groupId>
-          </exclusion>
-          <exclusion>
-            <artifactId>jakarta.xml.bind-api</artifactId>
-            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
           </exclusion>
         </exclusions>
-      </dependency>
-      <dependency>
-        <groupId>jakarta.xml.bind</groupId>
-        <artifactId>jakarta.xml.bind-api</artifactId>
-        <version>${jakarta.xml.bind.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -249,18 +193,18 @@
       <artifactId>junit-platform-launcher</artifactId>
       <version>${junit.platform.version}</version>
       <scope>test</scope>
-      <exclusions>
-        <exclusion>
-          <artifactId>junit-platform-engine</artifactId>
-          <groupId>org.junit.platform</groupId>
-        </exclusion>
-      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.junit.platform</groupId>
       <artifactId>junit-platform-runner</artifactId>
       <version>${junit.platform.version}</version>
       <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <artifactId>junit</artifactId>
+          <groupId>junit</groupId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <!-- mockito dependencies -->
     <dependency>
@@ -293,6 +237,12 @@
       <artifactId>cucumber-junit</artifactId>
       <version>${cucumber.version}</version>
       <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <artifactId>junit</artifactId>
+          <groupId>junit</groupId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>io.cucumber</groupId>
@@ -380,38 +330,6 @@
           </execution>
         </executions>
       </plugin>
-      <plugin>
-        <groupId>com.societegenerale.commons</groupId>
-        <artifactId>arch-unit-maven-plugin</artifactId>
-        <version>${arch-unit-maven-plugin.version}</version>
-        <configuration>
-          <projectPath>${project.basedir}/target</projectPath>
-          <rules>
-            <preConfiguredRules>
-              <rule>com.societegenerale.commons.plugin.rules.NoStandardStreamRuleTest</rule>
-              <rule>com.societegenerale.commons.plugin.rules.NoJunitAssertRuleTest</rule>
-              <rule>com.societegenerale.commons.plugin.rules.NoJodaTimeRuleTest</rule>
-              <rule>com.societegenerale.commons.plugin.rules.NoJavaUtilDateRuleTest</rule>
-              <rule>com.societegenerale.commons.plugin.rules.NoPowerMockRuleTest</rule>
-              <rule>com.societegenerale.commons.plugin.rules.NoPrefixForInterfacesRuleTest</rule>
-              <rule>com.societegenerale.commons.plugin.rules.NoPublicFieldRuleTest</rule>
-              <rule>com.societegenerale.commons.plugin.rules.NoTestIgnoreRuleTest</rule>
-              <rule>com.societegenerale.commons.plugin.rules.NoTestIgnoreWithoutCommentRuleTest
-              </rule>
-              <rule>com.societegenerale.commons.plugin.rules.NoInjectedFieldTest</rule>
-              <rule>com.societegenerale.commons.plugin.rules.NoAutowiredFieldTest</rule>
-            </preConfiguredRules>
-          </rules>
-        </configuration>
-        <executions>
-          <execution>
-            <phase>test</phase>
-            <goals>
-              <goal>arch-test</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
     </plugins>
     <pluginManagement>
       <plugins>
@@ -424,6 +342,19 @@
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-maven-plugin</artifactId>
           <version>${spring-boot.version}</version>
+        </plugin>
+        <plugin>
+          <groupId>com.societegenerale.commons</groupId>
+          <artifactId>arch-unit-maven-plugin</artifactId>
+          <version>${arch-unit-maven-plugin.version}</version>
+          <executions>
+            <execution>
+              <phase>test</phase>
+              <goals>
+                <goal>arch-test</goal>
+              </goals>
+            </execution>
+          </executions>
         </plugin>
       </plugins>
     </pluginManagement>

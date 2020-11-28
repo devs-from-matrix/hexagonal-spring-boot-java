@@ -48,6 +48,23 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <groupId>com.societegenerale.commons</groupId>
+        <artifactId>arch-unit-maven-plugin</artifactId>
+        <configuration>
+          <rules>
+            <preConfiguredRules>
+              <rule>com.societegenerale.commons.plugin.rules.NoStandardStreamRuleTest</rule>
+              <rule>com.societegenerale.commons.plugin.rules.NoJodaTimeRuleTest</rule>
+              <rule>com.societegenerale.commons.plugin.rules.NoJavaUtilDateRuleTest</rule>
+              <rule>com.societegenerale.commons.plugin.rules.NoPrefixForInterfacesRuleTest</rule>
+              <rule>com.societegenerale.commons.plugin.rules.NoPublicFieldRuleTest</rule>
+              <rule>com.societegenerale.commons.plugin.rules.NoInjectedFieldTest</rule>
+              <rule>com.societegenerale.commons.plugin.rules.NoAutowiredFieldTest</rule>
+            </preConfiguredRules>
+          </rules>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 </project>

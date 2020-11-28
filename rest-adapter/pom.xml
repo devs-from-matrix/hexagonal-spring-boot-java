@@ -27,19 +27,10 @@
     <dependency>
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-ui</artifactId>
-      <version>${springdoc.version}</version>
-    </dependency>
-    <dependency>
-      <artifactId>classgraph</artifactId>
-      <groupId>io.github.classgraph</groupId>
     </dependency>
     <dependency>
       <artifactId>commons-lang3</artifactId>
       <groupId>org.apache.commons</groupId>
-    </dependency>
-    <dependency>
-      <groupId>jakarta.activation</groupId>
-      <artifactId>jakarta.activation-api</artifactId>
     </dependency>
     <dependency>
       <groupId>jakarta.xml.bind</groupId>
@@ -51,4 +42,30 @@
       <artifactId>spring-boot-starter-test</artifactId>
     </dependency>
   </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>com.societegenerale.commons</groupId>
+        <artifactId>arch-unit-maven-plugin</artifactId>
+        <configuration>
+          <rules>
+            <preConfiguredRules>
+              <rule>com.societegenerale.commons.plugin.rules.NoJunitAssertRuleTest</rule>
+              <rule>com.societegenerale.commons.plugin.rules.NoPowerMockRuleTest</rule>
+              <rule>com.societegenerale.commons.plugin.rules.NoTestIgnoreRuleTest</rule>
+              <rule>com.societegenerale.commons.plugin.rules.NoTestIgnoreWithoutCommentRuleTest
+              </rule>
+              <rule>com.societegenerale.commons.plugin.rules.NoStandardStreamRuleTest</rule>
+              <rule>com.societegenerale.commons.plugin.rules.NoJodaTimeRuleTest</rule>
+              <rule>com.societegenerale.commons.plugin.rules.NoJavaUtilDateRuleTest</rule>
+              <rule>com.societegenerale.commons.plugin.rules.NoPrefixForInterfacesRuleTest</rule>
+              <rule>com.societegenerale.commons.plugin.rules.NoPublicFieldRuleTest</rule>
+              <rule>com.societegenerale.commons.plugin.rules.NoInjectedFieldTest</rule>
+              <rule>com.societegenerale.commons.plugin.rules.NoAutowiredFieldTest</rule>
+            </preConfiguredRules>
+          </rules>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>

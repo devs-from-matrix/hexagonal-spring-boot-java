@@ -63,6 +63,21 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <groupId>com.societegenerale.commons</groupId>
+        <artifactId>arch-unit-maven-plugin</artifactId>
+        <configuration>
+          <rules>
+            <preConfiguredRules>
+              <rule>com.societegenerale.commons.plugin.rules.NoJunitAssertRuleTest</rule>
+              <rule>com.societegenerale.commons.plugin.rules.NoPowerMockRuleTest</rule>
+              <rule>com.societegenerale.commons.plugin.rules.NoTestIgnoreRuleTest</rule>
+              <rule>com.societegenerale.commons.plugin.rules.NoTestIgnoreWithoutCommentRuleTest
+              </rule>
+            </preConfiguredRules>
+          </rules>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 </project>
