@@ -9,6 +9,9 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>bootstrap</artifactId>
+  <properties>
+    <start-class>packagename.boot.ExampleApplication</start-class>
+  </properties>
   <dependencies>
     <!-- left adapter -->
     <dependency>
@@ -64,6 +67,10 @@
             </preConfiguredRules>
           </rules>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>com.google.cloud.tools</groupId>
+        <artifactId>jib-maven-plugin</artifactId>
       </plugin>
     </plugins>
   </build>

@@ -31,6 +31,7 @@
     <arch-unit-maven-plugin.version>2.6.2</arch-unit-maven-plugin.version>
     <jacoco-maven-plugin.version>0.8.6</jacoco-maven-plugin.version>
     <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+    <jib-maven.plugin.version>2.6.0</jib-maven.plugin.version>
   </properties>
   <modules>
     <module>domain</module>
@@ -355,6 +356,11 @@
               </goals>
             </execution>
           </executions>
+        </plugin>
+        <plugin>
+          <groupId>com.google.cloud.tools</groupId>
+          <artifactId>jib-maven-plugin</artifactId>
+          <version>${jib-maven.plugin.version}</version>
         </plugin>
       </plugins>
     </pluginManagement>

@@ -19,6 +19,12 @@ Use it with caution as these will be used by the app-generator to replace them w
 
 `mvn clean install`
 
+### How to build a docker image ?
+
+`cd bootstrap && mvn compile jib:dockerBuild`
+
+[More information](https://cloud.google.com/java/getting-started/jib)
+
 ## How to start ?
 
 `cd bootstrap && mvn spring-boot:run`
