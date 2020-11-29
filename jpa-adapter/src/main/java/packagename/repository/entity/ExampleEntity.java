@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,6 +23,7 @@ public class ExampleEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_T_EXAMPLE")
+  @SequenceGenerator(name = "SEQ_T_EXAMPLE", sequenceName = "SEQ_T_EXAMPLE", allocationSize = 1, initialValue = 1)
   @Column(name = "TECH_ID")
   private Long techId;
 
