@@ -14,8 +14,11 @@ public class ExampleExceptionHandler {
   @ExceptionHandler(value = ExampleNotFoundException.class)
   public final ResponseEntity<ExampleExceptionResponse> handleExampleNotFoundException(
       final Exception exception, final WebRequest request) {
-    return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-        ExampleExceptionResponse.builder().message(exception.getMessage())
-            .path(((ServletWebRequest) request).getRequest().getRequestURI()).build());
+    return ResponseEntity.status(HttpStatus.NOT_FOUND)
+        .body(
+            ExampleExceptionResponse.builder()
+                .message(exception.getMessage())
+                .path(((ServletWebRequest) request).getRequest().getRequestURI())
+                .build());
   }
 }
