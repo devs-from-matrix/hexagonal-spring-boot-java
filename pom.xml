@@ -18,7 +18,7 @@
     <cucumber.version>6.9.1</cucumber.version>
     <mockito.version>3.6.0</mockito.version>
     <slf4j.version>1.7.30</slf4j.version>
-    <springdoc.version>1.5.2</springdoc.version>
+    <springdoc.version>1.5.8</springdoc.version>
     <commons-lang3.version>3.11</commons-lang3.version>
     <hsqldb.version>2.5.1</hsqldb.version>
     <jakarta.xml.bind.version>2.3.3</jakarta.xml.bind.version>
