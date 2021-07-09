@@ -24,11 +24,11 @@
     <jakarta.xml.bind.version>3.0.1</jakarta.xml.bind.version>
     <jboss-logging.version>3.4.2.Final</jboss-logging.version>
     <lombok.version>1.18.20</lombok.version>
-    <jaxb.version>2.4.0-b180830.0359</jaxb.version>
+    <jaxb.version>2.3.0</jaxb.version>
     <!-- plugins -->
     <cukedoctor-maven-plugin.version>3.7.0</cukedoctor-maven-plugin.version>
-    <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
-    <maven-enforcer-plugin>1.4.1</maven-enforcer-plugin>
+    <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
+    <maven-enforcer-plugin>3.0.0-M3</maven-enforcer-plugin>
     <arch-unit-maven-plugin.version>2.7.3</arch-unit-maven-plugin.version>
     <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
     <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
@@ -201,6 +201,11 @@
           </exclusion>
         </exclusions>
       </dependency>
+      <dependency>
+        <groupId>javax.xml.bind</groupId>
+        <artifactId>jaxb-api</artifactId>
+        <version>${jaxb.version}</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
   <dependencies>
@@ -313,11 +318,6 @@
       <artifactId>cucumber-spring</artifactId>
       <version>${cucumber.version}</version>
       <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>javax.xml.bind</groupId>
-      <artifactId>jaxb-api</artifactId>
-      <version>${jaxb.version}</version>
     </dependency>
   </dependencies>
   <build>
