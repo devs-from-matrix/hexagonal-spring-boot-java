@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>packagename</groupId>
   <artifactId>artifactName-parent</artifactId>
@@ -13,8 +13,8 @@
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <spring-boot.version>2.5.2</spring-boot.version>
-    <junit.version>5.8.0-M1</junit.version>
-    <junit.platform.version>1.8.0-M1</junit.platform.version>
+    <junit.version>5.7.2</junit.version>
+    <junit.platform.version>1.7.2</junit.platform.version>
     <cucumber.version>6.10.4</cucumber.version>
     <mockito.version>3.11.2</mockito.version>
     <slf4j.version>1.7.31</slf4j.version>
@@ -27,8 +27,8 @@
     <jaxb.version>2.4.0-b180830.0359</jaxb.version>
     <!-- plugins -->
     <cukedoctor-maven-plugin.version>3.7.0</cukedoctor-maven-plugin.version>
-    <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
-    <maven-enforcer-plugin>3.0.0-M3</maven-enforcer-plugin>
+    <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+    <maven-enforcer-plugin>1.4.1</maven-enforcer-plugin>
     <arch-unit-maven-plugin.version>2.7.3</arch-unit-maven-plugin.version>
     <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
     <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
@@ -215,18 +215,36 @@
       <artifactId>junit-jupiter-engine</artifactId>
       <version>${junit.version}</version>
       <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>org.apiguardian</groupId>
+          <artifactId>apiguardian-api</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.junit.vintage</groupId>
       <artifactId>junit-vintage-engine</artifactId>
       <version>${junit.version}</version>
       <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>org.apiguardian</groupId>
+          <artifactId>apiguardian-api</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.junit.platform</groupId>
       <artifactId>junit-platform-launcher</artifactId>
       <version>${junit.platform.version}</version>
       <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>org.apiguardian</groupId>
+          <artifactId>apiguardian-api</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.junit.platform</groupId>
@@ -237,6 +255,10 @@
         <exclusion>
           <artifactId>junit</artifactId>
           <groupId>junit</groupId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apiguardian</groupId>
+          <artifactId>apiguardian-api</artifactId>
         </exclusion>
       </exclusions>
     </dependency>
