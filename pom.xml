@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>packagename</groupId>
   <artifactId>artifactName-parent</artifactId>
@@ -12,26 +12,27 @@
     <java.version>11</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
-    <spring-boot.version>2.4.0</spring-boot.version>
-    <junit.version>5.7.0</junit.version>
-    <junit.platform.version>1.7.0</junit.platform.version>
-    <cucumber.version>6.9.1</cucumber.version>
-    <mockito.version>3.6.0</mockito.version>
-    <slf4j.version>1.7.30</slf4j.version>
-    <springdoc.version>1.5.2</springdoc.version>
-    <commons-lang3.version>3.11</commons-lang3.version>
-    <hsqldb.version>2.5.1</hsqldb.version>
-    <jakarta.xml.bind.version>2.3.3</jakarta.xml.bind.version>
-    <jboss-logging.version>3.4.1.Final</jboss-logging.version>
-    <lombok.version>1.18.16</lombok.version>
+    <spring-boot.version>2.5.2</spring-boot.version>
+    <junit.version>5.7.2</junit.version>
+    <junit.platform.version>1.7.2</junit.platform.version>
+    <cucumber.version>6.10.4</cucumber.version>
+    <mockito.version>3.11.2</mockito.version>
+    <slf4j.version>1.7.31</slf4j.version>
+    <springdoc.version>1.5.9</springdoc.version>
+    <commons-lang3.version>3.12.0</commons-lang3.version>
+    <hsqldb.version>2.6.0</hsqldb.version>
+    <jakarta.xml.bind.version>3.0.1</jakarta.xml.bind.version>
+    <jboss-logging.version>3.4.2.Final</jboss-logging.version>
+    <lombok.version>1.18.20</lombok.version>
+    <jaxb.version>2.4.0-b180830.0359</jaxb.version>
     <!-- plugins -->
-    <cukedoctor-maven-plugin.version>3.5.1</cukedoctor-maven-plugin.version>
-    <maven-surefire-plugin.version>3.0.0-M4</maven-surefire-plugin.version>
-    <maven-enforcer-plugin>3.0.0-M3</maven-enforcer-plugin>
-    <arch-unit-maven-plugin.version>2.6.2</arch-unit-maven-plugin.version>
-    <jacoco-maven-plugin.version>0.8.6</jacoco-maven-plugin.version>
+    <cukedoctor-maven-plugin.version>3.7.0</cukedoctor-maven-plugin.version>
+    <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+    <maven-enforcer-plugin>1.4.1</maven-enforcer-plugin>
+    <arch-unit-maven-plugin.version>2.7.3</arch-unit-maven-plugin.version>
+    <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
     <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-    <jib-maven.plugin.version>2.7.0</jib-maven.plugin.version>
+    <jib-maven.plugin.version>3.1.2</jib-maven.plugin.version>
   </properties>
   <modules>
     <module>domain</module>
@@ -135,6 +136,18 @@
             <artifactId>commons-lang3</artifactId>
             <groupId>org.apache.commons</groupId>
           </exclusion>
+          <exclusion>
+            <artifactId>spring-webmvc</artifactId>
+            <groupId>org.springframework</groupId>
+          </exclusion>
+          <exclusion>
+            <artifactId>spring-web</artifactId>
+            <groupId>org.springframework</groupId>
+          </exclusion>
+          <exclusion>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+            <groupId>org.springframework.boot</groupId>
+          </exclusion>
         </exclusions>
       </dependency>
       <dependency>
@@ -164,6 +177,26 @@
             <groupId>org.junit.vintage</groupId>
             <artifactId>junit-vintage-engine</artifactId>
           </exclusion>
+          <exclusion>
+            <groupId>org.apiguardian</groupId>
+            <artifactId>apiguardian-api</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+          </exclusion>
         </exclusions>
       </dependency>
     </dependencies>
@@ -182,18 +215,36 @@
       <artifactId>junit-jupiter-engine</artifactId>
       <version>${junit.version}</version>
       <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>org.apiguardian</groupId>
+          <artifactId>apiguardian-api</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.junit.vintage</groupId>
       <artifactId>junit-vintage-engine</artifactId>
       <version>${junit.version}</version>
       <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>org.apiguardian</groupId>
+          <artifactId>apiguardian-api</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.junit.platform</groupId>
       <artifactId>junit-platform-launcher</artifactId>
       <version>${junit.platform.version}</version>
       <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>org.apiguardian</groupId>
+          <artifactId>apiguardian-api</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.junit.platform</groupId>
@@ -204,6 +255,10 @@
         <exclusion>
           <artifactId>junit</artifactId>
           <groupId>junit</groupId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apiguardian</groupId>
+          <artifactId>apiguardian-api</artifactId>
         </exclusion>
       </exclusions>
     </dependency>
@@ -232,6 +287,12 @@
       <artifactId>cucumber-java8</artifactId>
       <version>${cucumber.version}</version>
       <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>org.apiguardian</groupId>
+          <artifactId>apiguardian-api</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>io.cucumber</groupId>
@@ -250,6 +311,11 @@
       <artifactId>cucumber-spring</artifactId>
       <version>${cucumber.version}</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.xml.bind</groupId>
+      <artifactId>jaxb-api</artifactId>
+      <version>${jaxb.version}</version>
     </dependency>
   </dependencies>
   <build>
