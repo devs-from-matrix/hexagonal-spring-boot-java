@@ -6,5 +6,6 @@ import packagename.domain.model.ExampleInfo;
 public interface RequestExample {
 
   ExampleInfo getExamples();
+
   Example getExampleByCode(Long code);
 }

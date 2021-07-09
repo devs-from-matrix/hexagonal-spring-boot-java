@@ -6,4 +6,3 @@ public class ExampleNotFoundException extends RuntimeException {
     super("Example with code " + id + " does not exist");
   }
 }
-
