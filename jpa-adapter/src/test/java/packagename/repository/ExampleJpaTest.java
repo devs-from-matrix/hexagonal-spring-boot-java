@@ -18,8 +18,7 @@ import packagename.domain.port.ObtainExample;
 @DataJpaTest
 public class ExampleJpaTest {
 
-  @Autowired
-  private ObtainExample obtainExample;
+  @Autowired private ObtainExample obtainExample;
 
   @Test
   @DisplayName("should start the application")
@@ -29,13 +28,17 @@ public class ExampleJpaTest {
 
   @Sql(scripts = {"/sql/data.sql"})
   @Test
-  @DisplayName("given examples exist in database when asked should return all examples from database")
+  @DisplayName(
+      "given examples exist in database when asked should return all examples from database")
   public void shouldGiveMeExamplesWhenAskedGivenExampleExistsInDatabase() {
     // Given from @Sql
     // When
     List<Example> examples = obtainExample.getAllExamples();
     // Then
-    assertThat(examples).isNotNull().extracting("description").contains("Twinkle twinkle little star");
+    assertThat(examples)
+        .isNotNull()
+        .extracting("description")
+        .contains("Twinkle twinkle little star");
   }
 
   @Test
@@ -49,18 +52,24 @@ public class ExampleJpaTest {
 
   @Sql(scripts = {"/sql/data.sql"})
   @Test
-  @DisplayName("given examples exists in database when asked for example by id should return the example")
+  @DisplayName(
+      "given examples exists in database when asked for example by id should return the example")
   public void shouldGiveTheExampleWhenAskedByIdGivenThatExampleByThatIdExistsInDatabase() {
     // Given from @Sql
     // When
     Optional<Example> example = obtainExample.getExampleByCode(1L);
     // Then
-    assertThat(example).isNotNull().isNotEmpty().get().isEqualTo(Example.builder().code(1L).description("Twinkle twinkle little star").build());
+    assertThat(example)
+        .isNotNull()
+        .isNotEmpty()
+        .get()
+        .isEqualTo(Example.builder().code(1L).description("Twinkle twinkle little star").build());
   }
 
   @Sql(scripts = {"/sql/data.sql"})
   @Test
-  @DisplayName("given examples exists in database when asked for example by id that does not exist should give empty")
+  @DisplayName(
+      "given examples exists in database when asked for example by id that does not exist should give empty")
   public void shouldGiveNoExampleWhenAskedByIdGivenThatExampleByThatIdDoesNotExistInDatabase() {
     // Given from @Sql
     // When
