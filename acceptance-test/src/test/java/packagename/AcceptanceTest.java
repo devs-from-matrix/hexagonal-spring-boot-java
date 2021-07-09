@@ -24,15 +24,17 @@ public class AcceptanceTest {
   @Test
   @DisplayName("should be able to get examples when asked for examples from hard coded examples")
   public void getExamplesFromHardCoded() {
-  /*
-      RequestExample    - left side port
-      ExampleDomain     - hexagon (domain)
-      ObtainExample     - right side port
-   */
+    /*
+       RequestExample    - left side port
+       ExampleDomain     - hexagon (domain)
+       ObtainExample     - right side port
+    */
     RequestExample requestExample = new ExampleDomain(); // the example is hard coded
     ExampleInfo exampleInfo = requestExample.getExamples();
     assertThat(exampleInfo).isNotNull();
-    assertThat(exampleInfo.getExamples()).isNotEmpty().extracting("description")
+    assertThat(exampleInfo.getExamples())
+        .isNotEmpty()
+        .extracting("description")
         .contains(
             "If you could read a leaf or tree\r\nyoud have no need of books.\r\n-- Alistair Cockburn (1987)");
   }
@@ -41,15 +43,20 @@ public class AcceptanceTest {
   @DisplayName("should be able to get examples when asked for examples from stub")
   public void getExamplesFromMockedStub(@Mock ObtainExample obtainExample) {
     // Stub
-    Example example = Example.builder().code(1L).description(
-        "I want to sleep\r\nSwat the flies\r\nSoftly, please.\r\n\r\n-- Masaoka Shiki (1867-1902)")
-        .build();
+    Example example =
+        Example.builder()
+            .code(1L)
+            .description(
+                "I want to sleep\r\nSwat the flies\r\nSoftly, please.\r\n\r\n-- Masaoka Shiki (1867-1902)")
+            .build();
     Mockito.lenient().when(obtainExample.getAllExamples()).thenReturn(List.of(example));
     // hexagon
     RequestExample requestExample = new ExampleDomain(obtainExample);
     ExampleInfo exampleInfo = requestExample.getExamples();
     assertThat(exampleInfo).isNotNull();
-    assertThat(exampleInfo.getExamples()).isNotEmpty().extracting("description")
+    assertThat(exampleInfo.getExamples())
+        .isNotEmpty()
+        .extracting("description")
         .contains(
             "I want to sleep\r\nSwat the flies\r\nSoftly, please.\r\n\r\n-- Masaoka Shiki (1867-1902)");
   }
@@ -60,9 +67,11 @@ public class AcceptanceTest {
     // Given
     // Stub
     Long code = 1L;
-    String description = "I want to sleep\\r\\nSwat the flies\\r\\nSoftly, please.\\r\\n\\r\\n-- Masaoka Shiki (1867-1902)";
+    String description =
+        "I want to sleep\\r\\nSwat the flies\\r\\nSoftly, please.\\r\\n\\r\\n-- Masaoka Shiki (1867-1902)";
     Example expectedExample = Example.builder().code(code).description(description).build();
-    Mockito.lenient().when(obtainExample.getExampleByCode(code))
+    Mockito.lenient()
+        .when(obtainExample.getExampleByCode(code))
         .thenReturn(Optional.of(expectedExample));
     // When
     RequestExample requestExample = new ExampleDomain(obtainExample);
@@ -80,8 +89,8 @@ public class AcceptanceTest {
     // When
     RequestExample requestExample = new ExampleDomain(obtainExample);
     // Then
-    assertThatThrownBy(() -> requestExample.getExampleByCode(code)).isInstanceOf(
-        ExampleNotFoundException.class)
+    assertThatThrownBy(() -> requestExample.getExampleByCode(code))
+        .isInstanceOf(ExampleNotFoundException.class)
         .hasMessageContaining("Example with code " + code + " does not exist");
   }
 }

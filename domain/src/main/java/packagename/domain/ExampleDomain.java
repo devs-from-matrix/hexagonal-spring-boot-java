@@ -12,8 +12,7 @@ public class ExampleDomain implements RequestExample {
   private ObtainExample obtainExample;
 
   public ExampleDomain() {
-    this(new ObtainExample() {
-    });
+    this(new ObtainExample() {});
   }
 
   public ExampleDomain(ObtainExample obtainExample) {
