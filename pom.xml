@@ -20,7 +20,8 @@
     <slf4j.version>1.7.31</slf4j.version>
     <springdoc.version>1.5.9</springdoc.version>
     <commons-lang3.version>3.12.0</commons-lang3.version>
-    <hsqldb.version>2.6.0</hsqldb.version>
+    <h2.version>1.4.200</h2.version>
+    <liquibase.version>4.4.1</liquibase.version>
     <jakarta.xml.bind.version>3.0.1</jakarta.xml.bind.version>
     <jboss-logging.version>3.4.2.Final</jboss-logging.version>
     <lombok.version>1.18.20</lombok.version>
@@ -162,11 +163,16 @@
         <artifactId>jakarta.xml.bind-api</artifactId>
         <version>${jakarta.xml.bind.version}</version>
       </dependency>
+      <dependency>
+        <groupId>org.liquibase</groupId>
+        <artifactId>liquibase-core</artifactId>
+        <version>${liquibase.version}</version>
+      </dependency>
       <!-- in-memory -->
       <dependency>
-        <groupId>org.hsqldb</groupId>
-        <artifactId>hsqldb</artifactId>
-        <version>${hsqldb.version}</version>
+        <groupId>com.h2database</groupId>
+        <artifactId>h2</artifactId>
+        <version>${h2.version}</version>
       </dependency>
       <!-- Test -->
       <dependency>
