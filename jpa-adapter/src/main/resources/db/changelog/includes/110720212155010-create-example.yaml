@@ -28,8 +28,8 @@ databaseChangeLog:
             incrementBy: 1
           sql:
             dbms: postgre
-            sql: GRANT INSERT, DELETE, UPDATE, SELECT ON TEST.T_EXAMPLE TO TEST_ONL;GRANT
-              SELECT ON TEST.SEQ_T_EXAMPLE TO TEST_ONL;
+            sql: GRANT INSERT, DELETE, UPDATE, SELECT ON EXAMPLE.T_EXAMPLE TO EXAMPLE_ONL;GRANT
+              SELECT ON EXAMPLE.SEQ_T_EXAMPLE TO EXAMPLE_ONL;
       rollback:
         - dropSequence:
             sequenceName: SEQ_T_EXAMPLE
