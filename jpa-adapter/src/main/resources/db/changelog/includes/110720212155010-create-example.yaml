@@ -26,10 +26,6 @@ databaseChangeLog:
             sequenceName: SEQ_T_EXAMPLE
             startValue: 1
             incrementBy: 1
-          sql:
-            dbms: postgre
-            sql: GRANT INSERT, DELETE, UPDATE, SELECT ON EXAMPLE.T_EXAMPLE TO EXAMPLE_ONL;GRANT
-              SELECT ON EXAMPLE.SEQ_T_EXAMPLE TO EXAMPLE_ONL;
       rollback:
         - dropSequence:
             sequenceName: SEQ_T_EXAMPLE
