@@ -20,14 +20,15 @@
     <slf4j.version>1.7.31</slf4j.version>
     <springdoc.version>1.5.9</springdoc.version>
     <commons-lang3.version>3.12.0</commons-lang3.version>
-    <hsqldb.version>2.6.0</hsqldb.version>
+    <h2.version>1.4.200</h2.version>
+    <liquibase.version>4.4.1</liquibase.version>
     <jakarta.xml.bind.version>3.0.1</jakarta.xml.bind.version>
     <jboss-logging.version>3.4.2.Final</jboss-logging.version>
     <lombok.version>1.18.20</lombok.version>
     <jaxb.version>2.3.1</jaxb.version>
     <!-- plugins -->
     <cukedoctor-maven-plugin.version>3.7.0</cukedoctor-maven-plugin.version>
-    <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
+    <maven-surefire-plugin.version>2.22.1</maven-surefire-plugin.version>
     <maven-enforcer-plugin>3.0.0-M3</maven-enforcer-plugin>
     <arch-unit-maven-plugin.version>2.7.3</arch-unit-maven-plugin.version>
     <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
@@ -35,6 +36,7 @@
     <jib-maven.plugin.version>3.1.2</jib-maven.plugin.version>
     <git-code-format-maven-plugin.version>3.1</git-code-format-maven-plugin.version>
     <githook-maven-plugin.version>1.0.5</githook-maven-plugin.version>
+    <pre-liquibase.version>1.1.1</pre-liquibase.version>
   </properties>
   <modules>
     <module>domain</module>
@@ -162,11 +164,21 @@
         <artifactId>jakarta.xml.bind-api</artifactId>
         <version>${jakarta.xml.bind.version}</version>
       </dependency>
+      <dependency>
+        <groupId>org.liquibase</groupId>
+        <artifactId>liquibase-core</artifactId>
+        <version>${liquibase.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>net.lbruun.springboot</groupId>
+        <artifactId>preliquibase-spring-boot-starter</artifactId>
+        <version>${pre-liquibase.version}</version>
+      </dependency>
       <!-- in-memory -->
       <dependency>
-        <groupId>org.hsqldb</groupId>
-        <artifactId>hsqldb</artifactId>
-        <version>${hsqldb.version}</version>
+        <groupId>com.h2database</groupId>
+        <artifactId>h2</artifactId>
+        <version>${h2.version}</version>
       </dependency>
       <!-- Test -->
       <dependency>

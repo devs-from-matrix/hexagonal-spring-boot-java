@@ -34,8 +34,17 @@
       <artifactId>spring-boot-starter-test</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.hsqldb</groupId>
-      <artifactId>hsqldb</artifactId>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.liquibase</groupId>
+      <artifactId>liquibase-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>net.lbruun.springboot</groupId>
+      <artifactId>preliquibase-spring-boot-starter</artifactId>
     </dependency>
   </dependencies>
   <build>

@@ -28,6 +28,12 @@
       <groupId>packagename</groupId>
       <artifactId>jpa-adapter</artifactId>
     </dependency>
+    <!-- temporary database -->
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <scope>runtime</scope>
+    </dependency>
     <!-- Frameworks & Libraries -->
     <dependency>
       <groupId>org.springframework.boot</groupId>

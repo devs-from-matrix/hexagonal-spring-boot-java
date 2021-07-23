@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-table-t_example
+      author: Paul WILLIAMS
+      changes:
+        - createTable:
+            tableName: T_EXAMPLE
+            columns:
+              - column:
+                  name: TECH_ID
+                  type: BIGINT
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: CODE
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: DESCRIPTION
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+          createSequence:
+            sequenceName: SEQ_T_EXAMPLE
+            startValue: 1
+            incrementBy: 1
+      rollback:
+        - dropSequence:
+            sequenceName: SEQ_T_EXAMPLE
+        - dropTable:
+            tableName: T_EXAMPLE
