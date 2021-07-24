@@ -8,16 +8,21 @@ spring:
       ddl-auto: none
     database-platform: org.hibernate.dialect.H2Dialect
     show-sql: false
-      properties:
+    properties:
+      hibernate:
+        default_schema: EXAMPLE
+        show_sql: false
+        use_sql_comments: false
+        format_sql: false
+      org:
         hibernate:
-          default_schema: EXAMPLE
-          show_sql: false
-          use_sql_comments: false
-          format_sql: false
-      sql:
-        init:
-          mode: always
-      liquibase:
-        enabled: true
-        liquibase-schema: LIQUIBASE
-        default-schema: EXAMPLE
+          envers:
+            default_schema: EXAMPLE_AUDIT
+            store_data_at_delete: true
+  sql:
+    init:
+      mode: always
+  liquibase:
+    enabled: true
+    liquibase-schema: LIQUIBASE
+    default-schema: EXAMPLE

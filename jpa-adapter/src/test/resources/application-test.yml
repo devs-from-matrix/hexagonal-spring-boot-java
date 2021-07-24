@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:testdb;MODE=PostgreSQL
+    url: jdbc:h2:mem:testdb;MODE=PostgreSQL;
   jpa:
     generate-ddl: false
     hibernate:
@@ -14,6 +14,11 @@ spring:
         show_sql: false
         use_sql_comments: false
         format_sql: false
+      org:
+        hibernate:
+          envers:
+            default_schema: EXAMPLE_AUDIT
+            store_data_at_delete: true
   sql:
     init:
       mode: always

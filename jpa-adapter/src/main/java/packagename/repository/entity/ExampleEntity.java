@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.envers.Audited;
 import packagename.domain.model.Example;
 
 @Table(name = "T_EXAMPLE")
@@ -19,6 +20,7 @@ import packagename.domain.model.Example;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Audited
 public class ExampleEntity {
 
   @Id
