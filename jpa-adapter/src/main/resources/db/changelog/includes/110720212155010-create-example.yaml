@@ -31,3 +31,47 @@ databaseChangeLog:
             sequenceName: SEQ_T_EXAMPLE
         - dropTable:
             tableName: T_EXAMPLE
+  - changeSet:
+      id: create-table-t_example_aud
+      author: Paul WILLIAMS
+      changes:
+        - createTable:
+            schemaName: EXAMPLE_AUDIT
+            tableName: T_EXAMPLE_AUD
+            columns:
+              - column:
+                  name: TECH_ID
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: CODE
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: DESCRIPTION
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: REV
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: FK_T_EXAMPLE_AUD_REV
+                    references: EXAMPLE_AUDIT.REVINFO(REV)
+              - column:
+                  name: REVTYPE
+                  type: INTEGER
+                  constraints:
+                    nullable: false
+        - addPrimaryKey:
+            schemaName: EXAMPLE_AUDIT
+            tableName: T_EXAMPLE_AUD
+            columnNames: TECH_ID, REV
+      rollback:
+        - dropTable:
+            schemaName: EXAMPLE_AUDIT
+            tableName: T_EXAMPLE_AUD
+            cascadeConstraints: true
