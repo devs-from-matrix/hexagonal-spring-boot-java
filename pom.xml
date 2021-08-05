@@ -13,7 +13,7 @@
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <spring-boot.version>2.5.3</spring-boot.version>
-    <cucumber.version>6.10.4</cucumber.version>
+    <cucumber.version>6.11.0</cucumber.version>
     <springdoc.version>1.5.10</springdoc.version>
     <pre-liquibase.version>1.1.1</pre-liquibase.version>
     <!-- plugins -->
