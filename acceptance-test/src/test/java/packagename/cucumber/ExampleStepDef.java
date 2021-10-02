@@ -18,7 +18,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import packagename.ExampleE2EApplication;
+import packagename.boot.ExampleApplication;
 import packagename.domain.model.Example;
 import packagename.domain.model.ExampleInfo;
 import packagename.repository.dao.ExampleDao;
@@ -26,7 +26,7 @@ import packagename.repository.entity.ExampleEntity;
 import packagename.rest.exception.ExampleExceptionResponse;
 
 @ExtendWith(SpringExtension.class)
-@SpringBootTest(classes = ExampleE2EApplication.class, webEnvironment = RANDOM_PORT)
+@SpringBootTest(classes = ExampleApplication.class, webEnvironment = RANDOM_PORT)
 @CucumberContextConfiguration
 @ActiveProfiles("test")
 public class ExampleStepDef implements En {
