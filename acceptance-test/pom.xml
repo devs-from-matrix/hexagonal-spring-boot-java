@@ -12,15 +12,7 @@
   <dependencies>
     <dependency>
       <groupId>packagename</groupId>
-      <artifactId>rest-adapter</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>packagename</groupId>
-      <artifactId>domain</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>packagename</groupId>
-      <artifactId>jpa-adapter</artifactId>
+      <artifactId>bootstrap</artifactId>
     </dependency>
     <!-- Test -->
     <dependency>

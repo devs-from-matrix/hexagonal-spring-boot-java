@@ -57,6 +57,11 @@
         <artifactId>jpa-adapter</artifactId>
         <version>${project.version}</version>
       </dependency>
+      <dependency>
+        <groupId>packagename</groupId>
+        <artifactId>bootstrap</artifactId>
+        <version>${project.version}</version>
+      </dependency>
       <!-- Frameworks & Libraries -->
       <dependency>
         <groupId>org.springframework.boot</groupId>
