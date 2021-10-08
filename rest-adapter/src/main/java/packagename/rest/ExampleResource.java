@@ -13,7 +13,7 @@ import packagename.domain.port.RequestExample;
 @RequestMapping("/api/v1/examples")
 public class ExampleResource {
 
-  private RequestExample requestExample;
+  private final RequestExample requestExample;
 
   public ExampleResource(RequestExample requestExample) {
     this.requestExample = requestExample;

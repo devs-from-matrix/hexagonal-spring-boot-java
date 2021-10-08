@@ -1,6 +1,5 @@
 package packagename.domain;
 
-import java.util.Optional;
 import packagename.domain.exception.ExampleNotFoundException;
 import packagename.domain.model.Example;
 import packagename.domain.model.ExampleInfo;
@@ -9,7 +8,7 @@ import packagename.domain.port.RequestExample;
 
 public class ExampleDomain implements RequestExample {
 
-  private ObtainExample obtainExample;
+  private final ObtainExample obtainExample;
 
   public ExampleDomain() {
     this(new ObtainExample() {});
@@ -26,7 +25,7 @@ public class ExampleDomain implements RequestExample {
 
   @Override
   public Example getExampleByCode(Long code) {
-    Optional<Example> example = obtainExample.getExampleByCode(code);
+    var example = obtainExample.getExampleByCode(code);
     return example.orElseThrow(() -> new ExampleNotFoundException(code));
   }
 }

@@ -2,6 +2,7 @@ package packagename.domain.port;
 
 import java.util.List;
 import java.util.Optional;
+import lombok.NonNull;
 import packagename.domain.model.Example;
 
 public interface ObtainExample {
@@ -16,7 +17,7 @@ public interface ObtainExample {
     return List.of(example);
   }
 
-  default Optional<Example> getExampleByCode(Long code) {
+  default Optional<Example> getExampleByCode(@NonNull Long code) {
     return Optional.of(
         Example.builder()
             .code(1L)

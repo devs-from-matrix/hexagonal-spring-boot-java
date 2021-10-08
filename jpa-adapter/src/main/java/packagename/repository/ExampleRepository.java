@@ -10,7 +10,7 @@ import packagename.repository.entity.ExampleEntity;
 
 public class ExampleRepository implements ObtainExample {
 
-  private ExampleDao exampleDao;
+  private final ExampleDao exampleDao;
 
   public ExampleRepository(ExampleDao exampleDao) {
     this.exampleDao = exampleDao;
@@ -23,7 +23,7 @@ public class ExampleRepository implements ObtainExample {
 
   @Override
   public Optional<Example> getExampleByCode(Long code) {
-    Optional<ExampleEntity> exampleEntity = exampleDao.findByCode(code);
+    var exampleEntity = exampleDao.findByCode(code);
     return exampleEntity.map(ExampleEntity::toModel);
   }
 }

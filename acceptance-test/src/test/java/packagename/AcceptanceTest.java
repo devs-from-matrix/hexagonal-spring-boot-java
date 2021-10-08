@@ -14,9 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import packagename.domain.ExampleDomain;
 import packagename.domain.exception.ExampleNotFoundException;
 import packagename.domain.model.Example;
-import packagename.domain.model.ExampleInfo;
 import packagename.domain.port.ObtainExample;
-import packagename.domain.port.RequestExample;
 
 @ExtendWith(MockitoExtension.class)
 public class AcceptanceTest {
@@ -29,8 +27,8 @@ public class AcceptanceTest {
        ExampleDomain     - hexagon (domain)
        ObtainExample     - right side port
     */
-    RequestExample requestExample = new ExampleDomain(); // the example is hard coded
-    ExampleInfo exampleInfo = requestExample.getExamples();
+    var requestExample = new ExampleDomain(); // the example is hard coded
+    var exampleInfo = requestExample.getExamples();
     assertThat(exampleInfo).isNotNull();
     assertThat(exampleInfo.getExamples())
         .isNotEmpty()
@@ -43,7 +41,7 @@ public class AcceptanceTest {
   @DisplayName("should be able to get examples when asked for examples from stub")
   public void getExamplesFromMockedStub(@Mock ObtainExample obtainExample) {
     // Stub
-    Example example =
+    var example =
         Example.builder()
             .code(1L)
             .description(
@@ -51,8 +49,8 @@ public class AcceptanceTest {
             .build();
     Mockito.lenient().when(obtainExample.getAllExamples()).thenReturn(List.of(example));
     // hexagon
-    RequestExample requestExample = new ExampleDomain(obtainExample);
-    ExampleInfo exampleInfo = requestExample.getExamples();
+    var requestExample = new ExampleDomain(obtainExample);
+    var exampleInfo = requestExample.getExamples();
     assertThat(exampleInfo).isNotNull();
     assertThat(exampleInfo.getExamples())
         .isNotEmpty()
@@ -66,16 +64,16 @@ public class AcceptanceTest {
   public void getExampleByIdFromMockedStub(@Mock ObtainExample obtainExample) {
     // Given
     // Stub
-    Long code = 1L;
-    String description =
+    var code = 1L;
+    var description =
         "I want to sleep\\r\\nSwat the flies\\r\\nSoftly, please.\\r\\n\\r\\n-- Masaoka Shiki (1867-1902)";
-    Example expectedExample = Example.builder().code(code).description(description).build();
+    var expectedExample = Example.builder().code(code).description(description).build();
     Mockito.lenient()
         .when(obtainExample.getExampleByCode(code))
         .thenReturn(Optional.of(expectedExample));
     // When
-    RequestExample requestExample = new ExampleDomain(obtainExample);
-    Example actualExample = requestExample.getExampleByCode(code);
+    var requestExample = new ExampleDomain(obtainExample);
+    var actualExample = requestExample.getExampleByCode(code);
     assertThat(actualExample).isNotNull().isEqualTo(expectedExample);
   }
 
@@ -84,10 +82,10 @@ public class AcceptanceTest {
   public void getExceptionWhenAskedExampleByIdThatDoesNotExist(@Mock ObtainExample obtainExample) {
     // Given
     // Stub
-    Long code = -1000L;
+    var code = -1000L;
     Mockito.lenient().when(obtainExample.getExampleByCode(code)).thenReturn(Optional.empty());
     // When
-    RequestExample requestExample = new ExampleDomain(obtainExample);
+    var requestExample = new ExampleDomain(obtainExample);
     // Then
     assertThatThrownBy(() -> requestExample.getExampleByCode(code))
         .isInstanceOf(ExampleNotFoundException.class)
