@@ -12,9 +12,9 @@
     <java.version>11</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
-    <spring-boot.version>2.5.5</spring-boot.version>
+    <spring-boot.version>2.5.6</spring-boot.version>
     <cucumber.version>6.11.0</cucumber.version>
-    <springdoc.version>1.5.10</springdoc.version>
+    <springdoc.version>1.5.12</springdoc.version>
     <pre-liquibase.version>1.1.1</pre-liquibase.version>
     <!-- plugins -->
     <cukedoctor-maven-plugin.version>3.7.0</cukedoctor-maven-plugin.version>
