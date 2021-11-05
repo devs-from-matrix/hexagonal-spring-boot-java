@@ -1,34 +1,23 @@
 package packagename.cucumber;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java8.En;
 import io.cucumber.java8.HookNoArgsBody;
-import io.cucumber.spring.CucumberContextConfiguration;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import packagename.boot.ExampleApplication;
 import packagename.domain.model.Example;
 import packagename.domain.model.ExampleInfo;
 import packagename.repository.dao.ExampleDao;
 import packagename.repository.entity.ExampleEntity;
 import packagename.rest.exception.ExampleExceptionResponse;
 
-@ExtendWith(SpringExtension.class)
-@SpringBootTest(classes = ExampleApplication.class, webEnvironment = RANDOM_PORT)
-@CucumberContextConfiguration
-@ActiveProfiles("test")
 public class ExampleStepDef implements En {
 
   private static final String LOCALHOST = "http://localhost:";
