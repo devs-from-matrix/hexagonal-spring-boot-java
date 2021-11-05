@@ -9,6 +9,9 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>acceptance-test</artifactId>
+  <properties>
+    <io.cucumber-message.version>17.1.1</io.cucumber-message.version>
+  </properties>
   <dependencies>
     <dependency>
       <groupId>packagename</groupId>
@@ -31,6 +34,17 @@
       <artifactId>cucumber-java8</artifactId>
       <version>${cucumber.version}</version>
       <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>io.cucumber</groupId>
+          <artifactId>messages</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>messages</artifactId>
+      <version>${io.cucumber-message.version}</version>
     </dependency>
     <dependency>
       <groupId>io.cucumber</groupId>
