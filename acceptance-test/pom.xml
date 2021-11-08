@@ -17,6 +17,23 @@
       <groupId>packagename</groupId>
       <artifactId>bootstrap</artifactId>
     </dependency>
+    <!-- Important: DO NOT DELETE the below dependencies though might seem like redundant to that of
+    bootstrap but they are required for jacoco and pitest report aggregation -->
+    <!-- left adapter -->
+    <dependency>
+      <groupId>packagename</groupId>
+      <artifactId>rest-adapter</artifactId>
+    </dependency>
+    <!-- domain -->
+    <dependency>
+      <groupId>packagename</groupId>
+      <artifactId>domain</artifactId>
+    </dependency>
+    <!-- right adapter -->
+    <dependency>
+      <groupId>packagename</groupId>
+      <artifactId>jpa-adapter</artifactId>
+    </dependency>
     <!-- Test -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -108,6 +125,19 @@
             </preConfiguredRules>
           </rules>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.pitest</groupId>
+        <artifactId>pitest-maven</artifactId>
+        <version>${pitest-maven-plugin.version}</version>
+        <executions>
+          <execution>
+            <id>put-it-together</id>
+            <goals>
+              <goal>report-aggregate</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
