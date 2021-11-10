@@ -103,7 +103,7 @@
         <artifactId>jacoco-maven-plugin</artifactId>
         <executions>
           <execution>
-            <id>report-aggregate</id>
+            <id>aggregate-jacoco-reports</id>
             <phase>verify</phase>
             <goals>
               <goal>report-aggregate</goal>
@@ -126,19 +126,34 @@
           </rules>
         </configuration>
       </plugin>
-      <plugin>
-        <groupId>org.pitest</groupId>
-        <artifactId>pitest-maven</artifactId>
-        <version>${pitest-maven-plugin.version}</version>
-        <executions>
-          <execution>
-            <id>put-it-together</id>
-            <goals>
-              <goal>report-aggregate</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
     </plugins>
   </build>
+  <profiles>
+    <profile>
+      <id>mutation-test</id>
+      <activation>
+        <property>
+          <name>mutation.tests</name>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.pitest</groupId>
+            <artifactId>pitest-maven</artifactId>
+            <version>${pitest-maven-plugin.version}</version>
+            <executions>
+              <execution>
+                <id>aggregate-pitest-reports</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>report-aggregate</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>
