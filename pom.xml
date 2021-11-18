@@ -25,7 +25,7 @@
     <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
     <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
     <jib-maven.plugin.version>3.1.4</jib-maven.plugin.version>
-    <git-code-format-maven-plugin.version>3.1</git-code-format-maven-plugin.version>
+    <git-code-format-maven-plugin.version>3.2</git-code-format-maven-plugin.version>
     <githook-maven-plugin.version>1.0.5</githook-maven-plugin.version>
     <pitest-maven-plugin.version>1.7.3</pitest-maven-plugin.version>
     <pitest-junit5-plugin.version>0.15</pitest-junit5-plugin.version>
