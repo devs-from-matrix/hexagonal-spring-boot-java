@@ -42,7 +42,15 @@
           <groupId>org.javassist</groupId>
           <artifactId>javassist</artifactId>
         </exclusion>
+        <exclusion>
+          <groupId>io.github.classgraph</groupId>
+          <artifactId>classgraph</artifactId>
+        </exclusion>
       </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>io.github.classgraph</groupId>
+      <artifactId>classgraph</artifactId>
     </dependency>
     <dependency>
       <groupId>org.liquibase</groupId>
