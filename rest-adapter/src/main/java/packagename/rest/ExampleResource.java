@@ -1,6 +1,7 @@
 package packagename.rest;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,5 +42,11 @@ public class ExampleResource {
   public ResponseEntity<Example> updateExample(
       @RequestBody Example example, @PathVariable Long code) {
     return ResponseEntity.ok(requestExample.updateExample(example, code));
+  }
+
+  @DeleteMapping("/{code}")
+  public ResponseEntity<Void> deleteExampleByCode(@PathVariable Long code) {
+    requestExample.deleteExampleByCode(code);
+    return ResponseEntity.noContent().build();
   }
 }

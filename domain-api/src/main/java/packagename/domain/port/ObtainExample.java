@@ -29,4 +29,6 @@ public interface ObtainExample {
   default Optional<Example> saveExample(@NonNull Example example) {
     return Optional.of(example);
   }
+
+  default void deleteExampleByCode(@NonNull Long code) { };
 }

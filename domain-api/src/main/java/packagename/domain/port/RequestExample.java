@@ -13,4 +13,6 @@ public interface RequestExample {
   Example saveExample(@NonNull Example example);
 
   Example updateExample(@NonNull Example example, @NonNull Long code);
+
+  void deleteExampleByCode(@NonNull Long code);
 }

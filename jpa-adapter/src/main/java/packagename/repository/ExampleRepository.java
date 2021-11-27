@@ -3,6 +3,7 @@ package packagename.repository;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import packagename.domain.exception.ExampleNotFoundException;
 import packagename.domain.model.Example;
 import packagename.domain.port.ObtainExample;
 import packagename.repository.dao.ExampleDao;
@@ -36,5 +37,11 @@ public class ExampleRepository implements ObtainExample {
             .build();
     var savedExample = exampleDao.save(exampleEntity);
     return Optional.of(savedExample.toModel());
+  }
+
+  @Override
+  public void deleteExampleByCode(Long code) {
+    var exampleEntity = exampleDao.findByCode(code);
+    exampleDao.delete(exampleEntity.orElseThrow(() -> new ExampleNotFoundException(code)));
   }
 }

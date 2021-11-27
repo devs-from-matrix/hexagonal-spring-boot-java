@@ -32,7 +32,7 @@ public class ExampleDomain implements RequestExample {
   @Override
   public Example saveExample(Example example) {
     var savedExample = obtainExample.saveExample(example);
-    return savedExample.orElseThrow(() -> new ExampleNotFoundException(example.getCode()));
+    return savedExample.orElse(example);
   }
 
   @Override
@@ -48,5 +48,10 @@ public class ExampleDomain implements RequestExample {
                       .orElseThrow(() -> new ExampleNotFoundException(existingExample.getCode()));
                 });
     return exampleSaved.orElseThrow(() -> new ExampleNotFoundException(example.getCode()));
+  }
+
+  @Override
+  public void deleteExampleByCode(Long code) {
+    obtainExample.deleteExampleByCode(code);
   }
 }
