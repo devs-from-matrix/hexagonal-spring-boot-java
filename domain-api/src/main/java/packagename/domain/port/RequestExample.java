@@ -9,4 +9,8 @@ public interface RequestExample {
   ExampleInfo getExamples();
 
   Example getExampleByCode(@NonNull Long code);
+
+  Example saveExample(@NonNull Example example);
+
+  Example updateExample(@NonNull Example example, @NonNull Long code);
 }

@@ -25,4 +25,8 @@ public interface ObtainExample {
                 "If you could read a leaf or tree\r\nyoud have no need of books.\r\n-- Alistair Cockburn (1987)")
             .build());
   }
+
+  default Optional<Example> saveExample(@NonNull Example example) {
+    return Optional.of(example);
+  }
 }

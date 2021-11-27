@@ -28,4 +28,25 @@ public class ExampleDomain implements RequestExample {
     var example = obtainExample.getExampleByCode(code);
     return example.orElseThrow(() -> new ExampleNotFoundException(code));
   }
+
+  @Override
+  public Example saveExample(Example example) {
+    var savedExample = obtainExample.saveExample(example);
+    return savedExample.orElseThrow(() -> new ExampleNotFoundException(example.getCode()));
+  }
+
+  @Override
+  public Example updateExample(Example example, Long code) {
+    var exampleSaved =
+        obtainExample
+            .getExampleByCode(code)
+            .map(
+                existingExample -> {
+                  existingExample.setDescription(example.getDescription());
+                  return obtainExample
+                      .saveExample(existingExample)
+                      .orElseThrow(() -> new ExampleNotFoundException(existingExample.getCode()));
+                });
+    return exampleSaved.orElseThrow(() -> new ExampleNotFoundException(example.getCode()));
+  }
 }

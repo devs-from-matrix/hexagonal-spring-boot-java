@@ -26,4 +26,15 @@ public class ExampleRepository implements ObtainExample {
     var exampleEntity = exampleDao.findByCode(code);
     return exampleEntity.map(ExampleEntity::toModel);
   }
+
+  @Override
+  public Optional<Example> saveExample(Example example) {
+    var exampleEntity =
+        ExampleEntity.builder()
+            .code(example.getCode())
+            .description(example.getDescription())
+            .build();
+    var savedExample = exampleDao.save(exampleEntity);
+    return Optional.of(savedExample.toModel());
+  }
 }

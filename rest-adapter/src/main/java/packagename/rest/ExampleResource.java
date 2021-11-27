@@ -3,6 +3,9 @@ package packagename.rest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import packagename.domain.model.Example;
@@ -27,5 +30,16 @@ public class ExampleResource {
   @GetMapping("/{code}")
   public ResponseEntity<Example> getExampleByCode(@PathVariable Long code) {
     return ResponseEntity.ok(requestExample.getExampleByCode(code));
+  }
+
+  @PostMapping
+  public ResponseEntity<Example> saveExample(@RequestBody Example example) {
+    return ResponseEntity.ok(requestExample.saveExample(example));
+  }
+
+  @PutMapping("/{code}")
+  public ResponseEntity<Example> updateExample(
+      @RequestBody Example example, @PathVariable Long code) {
+    return ResponseEntity.ok(requestExample.updateExample(example, code));
   }
 }
