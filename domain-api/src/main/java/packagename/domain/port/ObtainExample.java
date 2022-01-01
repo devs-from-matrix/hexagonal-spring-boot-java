@@ -30,5 +30,5 @@ public interface ObtainExample {
     return Optional.of(example);
   }
 
-  default void deleteExampleByCode(@NonNull Long code) { };
+  default void deleteExampleByCode(@NonNull Long code) {}
 }

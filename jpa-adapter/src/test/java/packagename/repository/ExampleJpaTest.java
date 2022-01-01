@@ -1,6 +1,7 @@
 package packagename.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,8 +11,10 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import packagename.domain.exception.ExampleNotFoundException;
 import packagename.domain.model.Example;
 import packagename.domain.port.ObtainExample;
+import packagename.repository.dao.ExampleDao;
 
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
@@ -19,6 +22,7 @@ import packagename.domain.port.ObtainExample;
 public class ExampleJpaTest {
 
   @Autowired private ObtainExample obtainExample;
+  @Autowired private ExampleDao exampleDao;
 
   @Test
   @DisplayName("should start the application")
@@ -76,5 +80,38 @@ public class ExampleJpaTest {
     var example = obtainExample.getExampleByCode(-1000L);
     // Then
     assertThat(example).isEmpty();
+  }
+
+  @Test
+  @DisplayName("should save given example in database")
+  public void shouldSaveGivenExampleInDatabase() {
+    // Given
+    Example example = new Example(123L, "Jhonny jhonny! yes papa");
+    // When
+    var savedExample = obtainExample.saveExample(example);
+    // Then
+    assertThat(savedExample).isNotNull().isNotEmpty().get().isEqualTo(example);
+  }
+
+  @Sql(scripts = {"/sql/data.sql"})
+  @Test
+  @DisplayName("should delete example by given example code from database")
+  public void shouldDeleteExampleByGivenExampleCodeFromDatabase() {
+    // Given from @Sql
+    // When
+    obtainExample.deleteExampleByCode(1L);
+    // Then
+    assertThat(exampleDao.findByCode(1L)).isEmpty();
+  }
+
+  @Test
+  @DisplayName("should give error when asked to delete an example which does not exist in database")
+  public void shouldGiveErrorWhenAskedToDeleteAnExampleWhichDoesNotExistInDatabase() {
+    // Given
+    Long exampleCode = 1L;
+    // When //Then
+    assertThatThrownBy(() -> obtainExample.deleteExampleByCode(exampleCode))
+        .isInstanceOf(ExampleNotFoundException.class)
+        .hasMessageContaining("Example with code " + exampleCode + " does not exist");
   }
 }

@@ -91,4 +91,68 @@ public class AcceptanceTest {
         .isInstanceOf(ExampleNotFoundException.class)
         .hasMessageContaining("Example with code " + code + " does not exist");
   }
+
+  @Test
+  @DisplayName("should be able to save an example when update example is called using stub")
+  public void shouldBeAbleToSaveAnExampleWhenExampleIsCalledUsingStub(
+      @Mock ObtainExample obtainExample) {
+    // Given
+    // Stub
+    var code = 1L;
+    var example =
+        Example.builder()
+            .code(code)
+            .description(
+                "I want to sleep\r\nSwat the flies\r\nSoftly, please.\r\n\r\n-- Masaoka Shiki (1867-1902)")
+            .build();
+
+    Mockito.lenient().when(obtainExample.getExampleByCode(code)).thenReturn(Optional.of(example));
+    Mockito.lenient().when(obtainExample.saveExample(example)).thenReturn(Optional.of(example));
+    // When
+    var requestExample = new ExampleDomain(obtainExample);
+    var actualExample = requestExample.updateExample(example, code);
+    // Then
+    assertThat(actualExample).isNotNull().isEqualTo(example);
+  }
+
+  @Test
+  @DisplayName("should get an exception when updating example that does not exists using stub")
+  public void shouldGetAnExceptionWhenUpdatingExampleThatDoesNotExist(
+      @Mock ObtainExample obtainExample) {
+    // Given
+    // Stub
+    var example =
+        Example.builder()
+            .code(1L)
+            .description(
+                "I want to sleep\r\nSwat the flies\r\nSoftly, please.\r\n\r\n-- Masaoka Shiki (1867-1902)")
+            .build();
+    var code = -1000L;
+    Mockito.lenient().when(obtainExample.getExampleByCode(code)).thenReturn(Optional.empty());
+    // When
+    var requestExample = new ExampleDomain(obtainExample);
+    // Then
+    assertThatThrownBy(() -> requestExample.updateExample(example, code))
+        .isInstanceOf(ExampleNotFoundException.class)
+        .hasMessageContaining("Example with code " + code + " does not exist");
+  }
+
+  @Test
+  @DisplayName("should delete an example using stub")
+  public void shouldDeleteAnExample(@Mock ObtainExample obtainExample) {
+    // Given
+    // Stub
+    var code = 1L;
+    var example =
+        Example.builder()
+            .code(code)
+            .description(
+                "I want to sleep\r\nSwat the flies\r\nSoftly, please.\r\n\r\n-- Masaoka Shiki (1867-1902)")
+            .build();
+    // When
+    var requestExample = new ExampleDomain(obtainExample);
+    requestExample.deleteExampleByCode(code);
+    // Then
+    Mockito.verify(obtainExample, Mockito.times(1)).deleteExampleByCode(code);
+  }
 }

@@ -43,11 +43,9 @@ public class ExampleDomain implements RequestExample {
             .map(
                 existingExample -> {
                   existingExample.setDescription(example.getDescription());
-                  return obtainExample
-                      .saveExample(existingExample)
-                      .orElseThrow(() -> new ExampleNotFoundException(existingExample.getCode()));
+                  return obtainExample.saveExample(existingExample).orElse(null);
                 });
-    return exampleSaved.orElseThrow(() -> new ExampleNotFoundException(example.getCode()));
+    return exampleSaved.orElseThrow(() -> new ExampleNotFoundException(code));
   }
 
   @Override

@@ -99,4 +99,45 @@ public class ExampleResourceTest {
                 .path(API_URI + "/" + code)
                 .build());
   }
+
+  @Test
+  @DisplayName("should save and return given example with the support of domain stub")
+  public void shouldSaveAndReturnGivenExampleWithTheSupportOfDomainStub() {
+    // Given
+    var example = Example.builder().code(1L).description("Johnny Johnny Yes Papa !!").build();
+    Mockito.lenient().when(requestExample.saveExample(example)).thenReturn(example);
+    // When
+    var url = LOCALHOST + port + API_URI;
+    var responseEntity = restTemplate.postForEntity(url, example, Example.class);
+    // Then
+    assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
+    assertThat(responseEntity.getBody()).isNotNull();
+    assertThat(responseEntity.getBody()).isEqualTo(example);
+  }
+
+  @Test
+  @DisplayName("should update an existing example by code with the support of domain stub")
+  public void shouldUpdateAnExistingExampleByCodeWithTheSupportOfDomainStub() {
+    // Given
+    var code = 1L;
+    var example = Example.builder().code(code).description("Johnny Johnny Yes Papa !!").build();
+    Mockito.lenient().when(requestExample.updateExample(example, code)).thenReturn(example);
+    // When
+    var url = LOCALHOST + port + API_URI + "/" + code;
+    restTemplate.put(url, example);
+    // Then
+    Mockito.verify(requestExample, Mockito.times(1)).updateExample(example, code);
+  }
+
+  @Test
+  @DisplayName("should delete an existing example by code with the support of domain stub")
+  public void shouldDeleteAnExistingExampleByCodeWithTheSupportOfDomainStub() {
+    // Given
+    var code = 1L;
+    // When
+    var url = LOCALHOST + port + API_URI + "/" + code;
+    restTemplate.delete(url);
+    // Then
+    Mockito.verify(requestExample, Mockito.times(1)).deleteExampleByCode(code);
+  }
 }
