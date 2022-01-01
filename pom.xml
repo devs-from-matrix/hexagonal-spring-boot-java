@@ -12,12 +12,12 @@
     <java.version>11</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
-    <junit-jupiter.version>5.8.1</junit-jupiter.version>
-    <spring-boot.version>2.6.0</spring-boot.version>
-    <cucumber.version>7.0.0</cucumber.version>
-    <springdoc.version>1.5.12</springdoc.version>
+    <junit-jupiter.version>5.8.2</junit-jupiter.version>
+    <spring-boot.version>2.6.1</spring-boot.version>
+    <cucumber.version>7.1.0</cucumber.version>
+    <springdoc.version>1.5.13</springdoc.version>
     <pre-liquibase.version>1.1.1</pre-liquibase.version>
-    <classgraph.version>4.8.116</classgraph.version>
+    <classgraph.version>4.8.137</classgraph.version>
     <!-- plugins -->
     <cukedoctor-maven-plugin.version>3.7.0</cukedoctor-maven-plugin.version>
     <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
@@ -26,7 +26,7 @@
     <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
     <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
     <jib-maven.plugin.version>3.1.4</jib-maven.plugin.version>
-    <git-code-format-maven-plugin.version>3.2</git-code-format-maven-plugin.version>
+    <git-code-format-maven-plugin.version>3.3</git-code-format-maven-plugin.version>
     <githook-maven-plugin.version>1.0.5</githook-maven-plugin.version>
     <pitest-maven-plugin.version>1.7.3</pitest-maven-plugin.version>
     <pitest-junit5-plugin.version>0.15</pitest-junit5-plugin.version>
