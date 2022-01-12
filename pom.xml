@@ -24,7 +24,7 @@
     <maven-enforcer-plugin>3.0.0</maven-enforcer-plugin>
     <arch-unit-maven-plugin.version>2.8.0</arch-unit-maven-plugin.version>
     <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
-    <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+    <maven-compiler-plugin.version>3.9.0</maven-compiler-plugin.version>
     <jib-maven.plugin.version>3.1.4</jib-maven.plugin.version>
     <git-code-format-maven-plugin.version>3.3</git-code-format-maven-plugin.version>
     <githook-maven-plugin.version>1.0.5</githook-maven-plugin.version>
