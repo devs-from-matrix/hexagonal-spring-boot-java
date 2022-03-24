@@ -10,7 +10,7 @@
   <modelVersion>4.0.0</modelVersion>
   <artifactId>acceptance-test</artifactId>
   <properties>
-    <io.cucumber-message.version>17.1.1</io.cucumber-message.version>
+    <io.cucumber-message.version>18.0.0</io.cucumber-message.version>
   </properties>
   <dependencies>
     <dependency>
