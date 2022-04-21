@@ -51,17 +51,6 @@
       <artifactId>cucumber-java8</artifactId>
       <version>${cucumber.version}</version>
       <scope>test</scope>
-      <exclusions>
-        <exclusion>
-          <groupId>io.cucumber</groupId>
-          <artifactId>messages</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>io.cucumber</groupId>
-      <artifactId>messages</artifactId>
-      <version>${io.cucumber-message.version}</version>
     </dependency>
     <dependency>
       <groupId>io.cucumber</groupId>
