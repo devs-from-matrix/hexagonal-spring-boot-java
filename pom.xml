@@ -15,7 +15,7 @@
     <junit-jupiter.version>5.8.2</junit-jupiter.version>
     <spring-boot.version>2.7.0</spring-boot.version>
     <cucumber.version>7.3.4</cucumber.version>
-    <springdoc.version>1.6.8</springdoc.version>
+    <springdoc.version>1.6.9</springdoc.version>
     <pre-liquibase.version>1.1.1</pre-liquibase.version>
     <classgraph.version>4.8.146</classgraph.version>
     <!-- plugins -->
