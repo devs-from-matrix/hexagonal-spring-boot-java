@@ -19,7 +19,7 @@
     <pre-liquibase.version>1.1.1</pre-liquibase.version>
     <classgraph.version>4.8.149</classgraph.version>
     <!-- plugins -->
-    <cukedoctor-maven-plugin.version>3.7.0</cukedoctor-maven-plugin.version>
+    <cukedoctor-maven-plugin.version>3.8.0</cukedoctor-maven-plugin.version>
     <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
     <maven-enforcer-plugin>3.1.0</maven-enforcer-plugin>
     <arch-unit-maven-plugin.version>2.9.2</arch-unit-maven-plugin.version>
