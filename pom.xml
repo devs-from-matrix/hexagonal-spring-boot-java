@@ -16,7 +16,7 @@
     <spring-boot.version>2.7.2</spring-boot.version>
     <cucumber.version>7.5.0</cucumber.version>
     <springdoc.version>1.6.9</springdoc.version>
-    <pre-liquibase.version>1.2.0</pre-liquibase.version>
+    <pre-liquibase.version>1.2.2</pre-liquibase.version>
     <classgraph.version>4.8.149</classgraph.version>
     <!-- plugins -->
     <cukedoctor-maven-plugin.version>3.8.0</cukedoctor-maven-plugin.version>
