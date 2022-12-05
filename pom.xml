@@ -28,7 +28,7 @@
     <jib-maven.plugin.version>3.3.1</jib-maven.plugin.version>
     <git-code-format-maven-plugin.version>3.5</git-code-format-maven-plugin.version>
     <githook-maven-plugin.version>1.0.5</githook-maven-plugin.version>
-    <pitest-maven-plugin.version>1.9.9</pitest-maven-plugin.version>
+    <pitest-maven-plugin.version>1.10.3</pitest-maven-plugin.version>
     <pitest-junit5-plugin.version>1.1.0</pitest-junit5-plugin.version>
   </properties>
   <modules>
