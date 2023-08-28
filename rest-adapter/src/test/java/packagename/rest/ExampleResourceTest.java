@@ -14,7 +14,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import packagename.domain.exception.ExampleNotFoundException;
 import packagename.domain.model.Example;
@@ -29,7 +29,8 @@ public class ExampleResourceTest {
 
   private static final String LOCALHOST = "http://localhost:";
   private static final String API_URI = "/api/v1/examples";
-  @LocalServerPort private int port;
+  @LocalServerPort
+  private int port;
   @Autowired private TestRestTemplate restTemplate;
   @Autowired private RequestExample requestExample;
 
