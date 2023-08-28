@@ -1,0 +1,76 @@
+---
+openapi: 3.0.1
+info:
+  title: Example API Documentation
+  version: v1
+tags:
+  - name: Example
+    description: Resource to manage example
+paths:
+  "/api/v1/examples":
+    get:
+      tags:
+        - Example
+      summary: Get all examples
+      operationId: getExamples
+      responses:
+        '200':
+          description: OK
+          content:
+            "*/*":
+              schema:
+                "$ref": "#/components/schemas/ExampleInfo"
+  "/api/v1/examples/{code}":
+    get:
+      tags:
+        - Example
+      summary: Get example by code
+      operationId: getExampleByCode
+      parameters:
+        - name: code
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            "*/*":
+              schema:
+                "$ref": "#/components/schemas/Example"
+components:
+  schemas:
+    Example:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int64
+        description:
+          type: string
+    ExampleInfo:
+      type: object
+      properties:
+        examples:
+          type: array
+          items:
+            "$ref": "#/components/schemas/Example"
+    ProblemDetail:
+      type: object
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        status:
+          type: integer
+          format: int32
+        detail:
+          type: string
+        instance:
+          type: string
+        timestamp:
+          type: string
+          format: date-time

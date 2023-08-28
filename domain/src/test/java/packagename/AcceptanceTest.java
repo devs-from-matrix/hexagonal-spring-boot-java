@@ -28,10 +28,9 @@ public class AcceptanceTest {
        ObtainExample     - right side port
     */
     var requestExample = new ExampleDomain(); // the example is hard coded
-    var exampleInfo = requestExample.getExamples();
-    assertThat(exampleInfo).isNotNull();
-    assertThat(exampleInfo.getExamples())
-        .isNotEmpty()
+    var examples = requestExample.getExamples();
+    assertThat(examples)
+        .hasSize(1)
         .extracting("description")
         .contains(
             "If you could read a leaf or tree\r\nyoud have no need of books.\r\n-- Alistair Cockburn (1987)");
@@ -50,10 +49,9 @@ public class AcceptanceTest {
     Mockito.lenient().when(obtainExample.getAllExamples()).thenReturn(List.of(example));
     // hexagon
     var requestExample = new ExampleDomain(obtainExample);
-    var exampleInfo = requestExample.getExamples();
-    assertThat(exampleInfo).isNotNull();
-    assertThat(exampleInfo.getExamples())
-        .isNotEmpty()
+    var examples = requestExample.getExamples();
+    assertThat(examples)
+        .hasSize(1)
         .extracting("description")
         .contains(
             "I want to sleep\r\nSwat the flies\r\nSoftly, please.\r\n\r\n-- Masaoka Shiki (1867-1902)");

@@ -1,10 +1,12 @@
 package packagename.domain;
 
+import lombok.NonNull;
 import packagename.domain.exception.ExampleNotFoundException;
 import packagename.domain.model.Example;
-import packagename.domain.model.ExampleInfo;
 import packagename.domain.port.ObtainExample;
 import packagename.domain.port.RequestExample;
+
+import java.util.List;
 
 public class ExampleDomain implements RequestExample {
 
@@ -19,12 +21,12 @@ public class ExampleDomain implements RequestExample {
   }
 
   @Override
-  public ExampleInfo getExamples() {
-    return ExampleInfo.builder().examples(obtainExample.getAllExamples()).build();
+  public List<Example> getExamples() {
+    return obtainExample.getAllExamples();
   }
 
   @Override
-  public Example getExampleByCode(Long code) {
+  public Example getExampleByCode(@NonNull Long code) {
     var example = obtainExample.getExampleByCode(code);
     return example.orElseThrow(() -> new ExampleNotFoundException(code));
   }
