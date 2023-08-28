@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    driver-class-name: ${database.driver-class-name:org.postgresql.Driver}
+    url: ${database.url}
+    username: ${database.username}
+    password: ${database.password}
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: ${database.show_sql:false}
+    properties:
+      hibernate:
+        default_schema: ${database.default_schema:EXAMPLE}
+        show_sql: ${database.show_sql:false}
+        use_sql_comments: ${database.use_sql_comments:false}
+        format_sql: ${database.format_sql:false}
+      org:
+        hibernate:
+          envers:
+            default_schema: ${database.default_audit_schema:EXAMPLE_AUDIT}
+            store_data_at_delete: true
+  liquibase:
+    enabled: true
+    liquibase-schema: ${database.liquibase_schema:LIQUIBASE}
+    default-schema: ${database.default_schema:EXAMPLE}

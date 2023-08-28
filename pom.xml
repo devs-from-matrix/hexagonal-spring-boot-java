@@ -9,22 +9,22 @@
   <version>1.0-SNAPSHOT</version>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <java.version>11</java.version>
+    <java.version>17</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
-    <junit-jupiter.version>5.9.2</junit-jupiter.version>
-    <spring-boot.version>2.7.5</spring-boot.version>
-    <cucumber.version>7.11.1</cucumber.version>
-    <springdoc.version>1.6.15</springdoc.version>
-    <pre-liquibase.version>1.2.2</pre-liquibase.version>
-    <classgraph.version>4.8.157</classgraph.version>
+    <junit-jupiter.version>5.9.3</junit-jupiter.version>
+    <spring-boot.version>3.1.3</spring-boot.version>
+    <cucumber.version>7.13.0</cucumber.version>
+    <springdoc-openapi-starter.version>2.2.0</springdoc-openapi-starter.version>
+    <pre-liquibase.version>1.4.0</pre-liquibase.version>
+    <otj-pg-embedded.version>1.0.1</otj-pg-embedded.version>
     <!-- plugins -->
     <cukedoctor-maven-plugin.version>3.9.0</cukedoctor-maven-plugin.version>
-    <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+    <maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
     <maven-enforcer-plugin>3.2.1</maven-enforcer-plugin>
     <arch-unit-maven-plugin.version>3.0.0</arch-unit-maven-plugin.version>
-    <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
-    <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
+    <jacoco-maven-plugin.version>0.8.10</jacoco-maven-plugin.version>
+    <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
     <jib-maven.plugin.version>3.3.1</jib-maven.plugin.version>
     <git-code-format-maven-plugin.version>4.2</git-code-format-maven-plugin.version>
     <githook-maven-plugin.version>1.0.5</githook-maven-plugin.version>
@@ -34,10 +34,10 @@
   <modules>
     <module>domain</module>
     <module>domain-api</module>
-    <module>acceptance-test</module>
     <module>rest-adapter</module>
     <module>jpa-adapter</module>
     <module>bootstrap</module>
+    <module>acceptance-test</module>
   </modules>
   <dependencyManagement>
     <dependencies>
@@ -81,11 +81,11 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-      <!-- springdoc ui -->
       <dependency>
-        <groupId>org.springdoc</groupId>
-        <artifactId>springdoc-openapi-ui</artifactId>
-        <version>${springdoc.version}</version>
+        <groupId>com.opentable.components</groupId>
+        <artifactId>otj-pg-embedded</artifactId>
+        <version>${otj-pg-embedded.version}</version>
+        <scope>test</scope>
       </dependency>
       <dependency>
         <groupId>net.lbruun.springboot</groupId>

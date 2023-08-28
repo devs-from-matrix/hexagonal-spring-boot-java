@@ -1,15 +1,10 @@
 package packagename.cucumber;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java8.En;
 import io.cucumber.java8.HookNoArgsBody;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import packagename.domain.model.Example;
@@ -18,11 +13,18 @@ import packagename.repository.dao.ExampleDao;
 import packagename.repository.entity.ExampleEntity;
 import packagename.rest.exception.ExampleExceptionResponse;
 
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class ExampleStepDef implements En {
 
   private static final String LOCALHOST = "http://localhost:";
   private static final String API_URI = "/api/v1/examples";
-  @LocalServerPort private int port;
+  @LocalServerPort
+  private int port;
   private ResponseEntity responseEntity;
 
   public ExampleStepDef(TestRestTemplate restTemplate, ExampleDao exampleDao) {
