@@ -6,12 +6,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import packagename.domain.model.Example;
-import packagename.domain.model.ExampleInfo;
 import packagename.domain.port.RequestExample;
+import packagename.rest.generated.api.ExampleApi;
+import packagename.rest.generated.model.ExampleInfo;
 
 @RestController
 @RequestMapping("/api/v1/examples")
-public class ExampleResource {
+public class ExampleResource implements ExampleApi {
 
   private final RequestExample requestExample;
 
@@ -21,7 +22,7 @@ public class ExampleResource {
 
   @GetMapping
   public ResponseEntity<ExampleInfo> getExamples() {
-    return ResponseEntity.ok(requestExample.getExamples());
+    return ResponseEntity.ok(ExampleInfo.builder().examples(requestExample.getExamples()).build());
   }
 
   @GetMapping("/{code}")

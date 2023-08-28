@@ -1,8 +1,11 @@
 package packagename.rest;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.within;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,11 +19,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.context.request.ServletWebRequest;
 import packagename.domain.exception.ExampleNotFoundException;
 import packagename.domain.model.Example;
-import packagename.domain.model.ExampleInfo;
 import packagename.domain.port.RequestExample;
-import packagename.rest.exception.ExampleExceptionResponse;
+import packagename.rest.generated.model.ExampleInfo;
+import packagename.rest.generated.model.ProblemDetail;
 
 @ExtendWith(MockitoExtension.class)
 @SpringBootTest(classes = ExampleRestAdapterApplication.class, webEnvironment = RANDOM_PORT)
@@ -47,7 +51,7 @@ public class ExampleResourceTest {
     var example = Example.builder().code(1L).description("Johnny Johnny Yes Papa !!").build();
     Mockito.lenient()
         .when(requestExample.getExamples())
-        .thenReturn(ExampleInfo.builder().examples(List.of(example)).build());
+        .thenReturn(List.of(example));
     // When
     var url = LOCALHOST + port + API_URI;
     var responseEntity = restTemplate.getForEntity(url, ExampleInfo.class);
@@ -89,15 +93,20 @@ public class ExampleResourceTest {
         .thenThrow(new ExampleNotFoundException(code));
     // When
     var url = LOCALHOST + port + API_URI + "/" + code;
-    var responseEntity = restTemplate.getForEntity(url, ExampleExceptionResponse.class);
+    var responseEntity = restTemplate.getForEntity(url, ProblemDetail.class);
     // Then
+    var expectedProblemDetail = ProblemDetail.builder()
+        .type("https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404")
+        .status(HttpStatus.NOT_FOUND.value())
+        .detail("Example with code -1000 does not exist")
+        .instance("/api/v1/examples/-1000")
+        .title("Example not found")
+        .build();
     assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
     assertThat(responseEntity.getBody()).isNotNull();
-    assertThat(responseEntity.getBody())
-        .isEqualTo(
-            ExampleExceptionResponse.builder()
-                .message("Example with code " + code + " does not exist")
-                .path(API_URI + "/" + code)
-                .build());
+    assertThat(responseEntity.getBody()).usingRecursiveComparison()
+        .ignoringFields("timestamp")
+        .isEqualTo(expectedProblemDetail);
+    assertThat(responseEntity.getBody().getTimestamp()).isCloseTo(LocalDateTime.now(), within(100L, ChronoUnit.SECONDS));
   }
 }

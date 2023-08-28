@@ -1,12 +1,12 @@
 package packagename.domain.port;
 
+import java.util.List;
 import lombok.NonNull;
 import packagename.domain.model.Example;
-import packagename.domain.model.ExampleInfo;
 
 public interface RequestExample {
 
-  ExampleInfo getExamples();
+  List<Example> getExamples();
 
   Example getExampleByCode(@NonNull Long code);
 }

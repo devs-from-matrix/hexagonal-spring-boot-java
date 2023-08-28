@@ -35,6 +35,42 @@
   <build>
     <plugins>
       <plugin>
+        <groupId>org.openapitools</groupId>
+        <artifactId>openapi-generator-maven-plugin</artifactId>
+        <version>6.3.0</version>
+        <executions>
+          <execution>
+            <id>generate-open-api-source</id>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <configuration>
+              <inputSpec>${project.basedir}/src/main/resources/open-api.yaml</inputSpec>
+              <generatorName>spring</generatorName>
+              <library>spring-boot</library>
+              <schemaMappings>
+                <schemaMapping>Example=packagename.domain.model.Example</schemaMapping>
+              </schemaMappings>
+              <typeMappings>
+                <typeMapping>OffsetDateTime=java.time.LocalDateTime</typeMapping>
+              </typeMappings>
+              <apiPackage>packagename.rest.generated.api</apiPackage>
+              <modelPackage>packagename.rest.generated.model</modelPackage>
+              <configOptions>
+                <performBeanValidation>false</performBeanValidation>
+                <useSpringBoot3>true</useSpringBoot3>
+                <interfaceOnly>true</interfaceOnly>
+                <dateLibrary>java8</dateLibrary>
+                <useTags>true</useTags>
+                <openApiNullable>false</openApiNullable>
+                <additionalModelTypeAnnotations>@lombok.AllArgsConstructor @lombok.Builder @lombok.Data @lombok.NoArgsConstructor
+                </additionalModelTypeAnnotations>
+              </configOptions>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
         <groupId>com.societegenerale.commons</groupId>
         <artifactId>arch-unit-maven-plugin</artifactId>
         <configuration>
