@@ -1,0 +1,28 @@
+description = 'acceptance-test'
+
+dependencies {
+  implementation project(':bootstrap')
+  implementation project(':rest-adapter')
+  implementation project(':jpa-adapter')
+
+  testImplementation(platform("io.cucumber:cucumber-bom:7.4.1"))
+
+  testImplementation 'org.springframework.boot:spring-boot-starter-test'
+  testImplementation 'com.h2database:h2'
+  testImplementation 'io.cucumber:cucumber-java8'
+  testImplementation 'io.cucumber:cucumber-junit-platform-engine'
+  testImplementation 'io.cucumber:cucumber-spring'
+}
+
+apply plugin: 'com.societegenerale.commons.plugin.gradle.ArchUnitGradlePlugin'
+
+archUnit {
+  preConfiguredRules = [
+
+      "com.societegenerale.commons.plugin.rules.NoJunitAssertRuleTest",
+      "com.societegenerale.commons.plugin.rules.NoPowerMockRuleTest",
+      "com.societegenerale.commons.plugin.rules.NoTestIgnoreWithoutCommentRuleTest",
+      "com.societegenerale.commons.plugin.rules.NoTestIgnoreRuleTest",
+  ]
+}
+

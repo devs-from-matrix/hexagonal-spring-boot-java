@@ -1,0 +1,32 @@
+description = 'jpa-adapter'
+
+dependencies {
+    api project(':domain-api')
+    api 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.liquibase:liquibase-core'
+    implementation 'org.springframework.data:spring-data-envers'
+    implementation 'org.postgresql:postgresql'
+    implementation 'net.lbruun.springboot:preliquibase-spring-boot-starter:1.4.0'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'com.h2database:h2'
+}
+
+apply plugin: 'com.societegenerale.commons.plugin.gradle.ArchUnitGradlePlugin'
+
+archUnit {
+    preConfiguredRules = [
+        "com.societegenerale.commons.plugin.rules.NoStandardStreamRuleTest",
+        "com.societegenerale.commons.plugin.rules.NoInjectedFieldTest",
+        "com.societegenerale.commons.plugin.rules.NoAutowiredFieldTest",
+        "com.societegenerale.commons.plugin.rules.NoTestIgnoreWithoutCommentRuleTest",
+        "com.societegenerale.commons.plugin.rules.NoPrefixForInterfacesRuleTest",
+        "com.societegenerale.commons.plugin.rules.NoPowerMockRuleTest",
+        "com.societegenerale.commons.plugin.rules.NoJodaTimeRuleTest",
+        "com.societegenerale.commons.plugin.rules.NoJunitAssertRuleTest",
+        "com.societegenerale.commons.plugin.rules.HexagonalArchitectureTest",
+        "com.societegenerale.commons.plugin.rules.StringFieldsThatAreActuallyDatesRuleTest",
+        "com.societegenerale.commons.plugin.rules.NoJavaUtilDateRuleTest",
+        "com.societegenerale.commons.plugin.rules.NoPublicFieldRuleTest"
+    ]
+    configurableRules = [configurableRule("com.tngtech.archunit.library.GeneralCodingRules", applyOn("packagename", "main"))]
+}

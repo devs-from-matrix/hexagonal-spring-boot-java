@@ -1,0 +1,66 @@
+description = 'rest-adapter'
+
+apply plugin: 'org.openapi.generator'
+
+dependencies {
+  implementation project(':domain-api')
+  api "org.springframework.boot:spring-boot-starter-web"
+  implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:$springDocVersion"
+  testImplementation "org.springframework.boot:spring-boot-starter-test"
+}
+
+sourceSets {
+  main {
+    java.srcDirs = [
+        'src/main/java',
+        "$projectDir/build/generated/src/main/java",
+    ]
+  }
+}
+
+openApiGenerate {
+  generatorName = "spring"
+  inputSpec = "$projectDir/src/main/resources/open-api.yaml".toString()
+  outputDir = "$projectDir/build/generated"
+  apiPackage = "packagename.rest.generated.api"
+  modelPackage = "packagename.rest.generated.model"
+  library = "spring-boot"
+  schemaMappings = [
+      Example: "packagename.domain.model.Example"
+  ]
+  typeMappings = [
+      OffsetDateTime: "java.time.LocalDateTime"
+  ]
+  configOptions = [
+      useSpringBoot3                : "true",
+      dateLibrary                   : "java8",
+      performBeanValidation         : "false",
+      hideGenerationTimestamp       : "true",
+      interfaceOnly                 : "true",
+      useTags                       : "true",
+      openApiNullable               : "false",
+      skipDefaultInterface          : "true",
+      additionalModelTypeAnnotations: "@lombok.AllArgsConstructor @lombok.NoArgsConstructor @lombok.Builder @lombok.Data"
+  ]
+}
+tasks.compileJava.dependsOn tasks.openApiGenerate
+
+apply plugin: 'com.societegenerale.commons.plugin.gradle.ArchUnitGradlePlugin'
+
+archUnit {
+  preConfiguredRules = [
+      "com.societegenerale.commons.plugin.rules.NoStandardStreamRuleTest",
+      "com.societegenerale.commons.plugin.rules.NoInjectedFieldTest",
+      "com.societegenerale.commons.plugin.rules.NoAutowiredFieldTest",
+      "com.societegenerale.commons.plugin.rules.NoTestIgnoreWithoutCommentRuleTest",
+      "com.societegenerale.commons.plugin.rules.NoPrefixForInterfacesRuleTest",
+      "com.societegenerale.commons.plugin.rules.NoPowerMockRuleTest",
+      "com.societegenerale.commons.plugin.rules.NoJodaTimeRuleTest",
+      "com.societegenerale.commons.plugin.rules.NoJunitAssertRuleTest",
+      "com.societegenerale.commons.plugin.rules.HexagonalArchitectureTest",
+      "com.societegenerale.commons.plugin.rules.StringFieldsThatAreActuallyDatesRuleTest",
+      "com.societegenerale.commons.plugin.rules.NoJavaUtilDateRuleTest",
+      "com.societegenerale.commons.plugin.rules.NoPublicFieldRuleTest"
+  ]
+//  configurableRules = [configurableRule("com.tngtech.archunit.library.GeneralCodingRules", applyOn("packagename", "main"))]
+}

@@ -1,0 +1,33 @@
+description = 'bootstrap'
+
+apply plugin: 'org.springframework.boot'
+
+bootJar {
+  archiveFileName = "${rootProject.name}.jar"
+}
+
+dependencies {
+  implementation project(':rest-adapter')
+  implementation project(':domain')
+  implementation project(':jpa-adapter')
+  implementation 'org.springframework.boot:spring-boot-starter-actuator'
+  implementation 'org.springframework.boot:spring-boot-devtools'
+  runtimeOnly 'com.h2database:h2'
+}
+
+apply plugin: 'com.societegenerale.commons.plugin.gradle.ArchUnitGradlePlugin'
+
+archUnit {
+  preConfiguredRules = [
+      "com.societegenerale.commons.plugin.rules.NoStandardStreamRuleTest",
+      "com.societegenerale.commons.plugin.rules.NoInjectedFieldTest",
+      "com.societegenerale.commons.plugin.rules.NoAutowiredFieldTest",
+      "com.societegenerale.commons.plugin.rules.NoPrefixForInterfacesRuleTest",
+      "com.societegenerale.commons.plugin.rules.NoJodaTimeRuleTest",
+      "com.societegenerale.commons.plugin.rules.HexagonalArchitectureTest",
+      "com.societegenerale.commons.plugin.rules.StringFieldsThatAreActuallyDatesRuleTest",
+      "com.societegenerale.commons.plugin.rules.NoJavaUtilDateRuleTest",
+      "com.societegenerale.commons.plugin.rules.NoPublicFieldRuleTest"
+  ]
+  configurableRules = [configurableRule("com.tngtech.archunit.library.GeneralCodingRules", applyOn("packagename", "main"))]
+}

@@ -12,8 +12,13 @@ import packagename.repository.config.JpaAdapterConfig;
 @Import(JpaAdapterConfig.class)
 public class BootstrapConfig {
 
+  private final ObtainExample obtainExample;
+  BootstrapConfig(ObtainExample obtainExample) {
+    this.obtainExample = obtainExample;
+  }
+
   @Bean
-  public RequestExample getRequestExample(ObtainExample obtainExample) {
+  public RequestExample getRequestExample() {
     return new ExampleDomain(obtainExample);
   }
 }
