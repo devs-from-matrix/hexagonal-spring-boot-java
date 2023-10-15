@@ -16,15 +16,15 @@ public class ExampleExceptionHandler {
   @ExceptionHandler(value = ExampleNotFoundException.class)
   public final ResponseEntity<ProblemDetail> handleExampleNotFoundException(
       final Exception exception, final WebRequest request) {
-    var problem = ProblemDetail.builder()
-        .type("https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404")
-        .status(HttpStatus.NOT_FOUND.value())
-        .title("Example not found")
-        .detail(exception.getMessage())
-        .instance(((ServletWebRequest) request).getRequest().getRequestURI())
-        .timestamp(LocalDateTime.now())
-        .build();
-    return ResponseEntity.status(HttpStatus.NOT_FOUND)
-        .body(problem);
+    var problem =
+        ProblemDetail.builder()
+            .type("https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404")
+            .status(HttpStatus.NOT_FOUND.value())
+            .title("Example not found")
+            .detail(exception.getMessage())
+            .instance(((ServletWebRequest) request).getRequest().getRequestURI())
+            .timestamp(LocalDateTime.now())
+            .build();
+    return ResponseEntity.status(HttpStatus.NOT_FOUND).body(problem);
   }
 }

@@ -25,8 +25,7 @@ public class ExampleStepDef implements En {
 
   private static final String LOCALHOST = "http://localhost:";
   private static final String API_URI = "/api/v1/examples";
-  @LocalServerPort
-  private int port;
+  @LocalServerPort private int port;
   private ResponseEntity responseEntity;
 
   public ExampleStepDef(TestRestTemplate restTemplate, ExampleDao exampleDao) {
@@ -80,19 +79,21 @@ public class ExampleStepDef implements En {
         (String exception) -> {
           assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
           var actualResponse = (ProblemDetail) responseEntity.getBody();
-          var expectedProblemDetail = ProblemDetail.builder()
-              .type("https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404")
-              .status(HttpStatus.NOT_FOUND.value())
-              .detail("Example with code 10000 does not exist")
-              .instance("/api/v1/examples/10000")
-              .title("Example not found")
-              .build();
+          var expectedProblemDetail =
+              ProblemDetail.builder()
+                  .type("https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404")
+                  .status(HttpStatus.NOT_FOUND.value())
+                  .detail("Example with code 10000 does not exist")
+                  .instance("/api/v1/examples/10000")
+                  .title("Example not found")
+                  .build();
           assertThat(actualResponse).isNotNull();
-          assertThat(actualResponse).usingRecursiveComparison()
+          assertThat(actualResponse)
+              .usingRecursiveComparison()
               .ignoringFields("timestamp")
               .isEqualTo(expectedProblemDetail);
-          assertThat(actualResponse.getTimestamp()).isCloseTo(
-              LocalDateTime.now(), within(100L, ChronoUnit.SECONDS));
+          assertThat(actualResponse.getTimestamp())
+              .isCloseTo(LocalDateTime.now(), within(100L, ChronoUnit.SECONDS));
         });
 
     Then(

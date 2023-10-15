@@ -1,12 +1,11 @@
 package packagename.domain;
 
+import java.util.List;
 import lombok.NonNull;
 import packagename.domain.exception.ExampleNotFoundException;
 import packagename.domain.model.Example;
 import packagename.domain.port.ObtainExample;
 import packagename.domain.port.RequestExample;
-
-import java.util.List;
 
 public class ExampleDomain implements RequestExample {
 
