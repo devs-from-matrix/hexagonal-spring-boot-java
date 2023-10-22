@@ -57,6 +57,7 @@
               <apiPackage>packagename.rest.generated.api</apiPackage>
               <modelPackage>packagename.rest.generated.model</modelPackage>
               <configOptions>
+                <useBeanValidation>false</useBeanValidation>
                 <performBeanValidation>false</performBeanValidation>
                 <useSpringBoot3>true</useSpringBoot3>
                 <interfaceOnly>true</interfaceOnly>
