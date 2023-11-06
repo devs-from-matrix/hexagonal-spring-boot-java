@@ -12,7 +12,7 @@
     <java.version>17</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
-    <junit-jupiter.version>5.10.0</junit-jupiter.version>
+    <junit-jupiter.version>5.10.1</junit-jupiter.version>
     <spring-boot.version>3.1.5</spring-boot.version>
     <cucumber.version>7.14.0</cucumber.version>
     <springdoc-openapi-starter.version>2.2.0</springdoc-openapi-starter.version>
