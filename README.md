@@ -15,7 +15,7 @@ code.
 ## Pre-requisite
 
 - maven
-- open jdk 11
+- open jdk 17
 
 ## How to build ?
 
