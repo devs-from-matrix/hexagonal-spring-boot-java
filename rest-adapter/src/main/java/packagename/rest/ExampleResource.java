@@ -21,7 +21,7 @@ public class ExampleResource implements ExampleApi {
     return ResponseEntity.ok(ExampleInfo.builder().examples(requestExample.getExamples()).build());
   }
 
-  public ResponseEntity<Example> getExampleByCode(@PathVariable Long code) {
+  public ResponseEntity<Example> getExampleByCode(@PathVariable("code") Long code) {
     return ResponseEntity.ok(requestExample.getExampleByCode(code));
   }
 }
