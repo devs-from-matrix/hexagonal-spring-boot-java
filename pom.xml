@@ -17,7 +17,7 @@
     <cucumber.version>7.16.1</cucumber.version>
     <springdoc-openapi-starter.version>2.5.0</springdoc-openapi-starter.version>
     <pre-liquibase.version>1.5.0</pre-liquibase.version>
-    <otj-pg-embedded.version>1.0.2</otj-pg-embedded.version>
+    <otj-pg-embedded.version>1.0.3</otj-pg-embedded.version>
     <snakeyaml.version>2.2</snakeyaml.version>
     <h2.version>2.2.224</h2.version>
     <!-- plugins -->
