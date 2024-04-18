@@ -14,7 +14,7 @@
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <junit-jupiter.version>5.10.2</junit-jupiter.version>
     <spring-boot.version>3.2.4</spring-boot.version>
-    <cucumber.version>7.16.1</cucumber.version>
+    <cucumber.version>7.17.0</cucumber.version>
     <springdoc-openapi-starter.version>2.5.0</springdoc-openapi-starter.version>
     <pre-liquibase.version>1.5.0</pre-liquibase.version>
     <otj-pg-embedded.version>1.0.3</otj-pg-embedded.version>
