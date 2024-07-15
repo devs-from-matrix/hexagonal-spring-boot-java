@@ -19,7 +19,7 @@
     <pre-liquibase.version>1.5.0</pre-liquibase.version>
     <otj-pg-embedded.version>1.0.3</otj-pg-embedded.version>
     <snakeyaml.version>2.2</snakeyaml.version>
-    <h2.version>2.2.224</h2.version>
+    <h2.version>2.3.230</h2.version>
     <!-- plugins -->
     <cukedoctor-maven-plugin.version>3.9.0</cukedoctor-maven-plugin.version>
     <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
