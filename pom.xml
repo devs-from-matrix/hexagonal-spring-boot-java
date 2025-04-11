@@ -20,7 +20,7 @@
     <otj-pg-embedded.version>1.1.0</otj-pg-embedded.version>
     <snakeyaml.version>2.4</snakeyaml.version>
     <h2.version>2.3.232</h2.version>
-    <apache.commons.version>1.13.0</apache.commons.version>
+    <apache.commons.version>1.13.1</apache.commons.version>
     <!-- plugins -->
     <cukedoctor-maven-plugin.version>3.9.0</cukedoctor-maven-plugin.version>
     <maven-surefire-plugin.version>3.5.3</maven-surefire-plugin.version>
