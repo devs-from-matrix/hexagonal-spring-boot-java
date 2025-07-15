@@ -24,7 +24,7 @@
     <!-- plugins -->
     <cukedoctor-maven-plugin.version>3.9.0</cukedoctor-maven-plugin.version>
     <maven-surefire-plugin.version>3.5.3</maven-surefire-plugin.version>
-    <maven-enforcer-plugin>3.6.0</maven-enforcer-plugin>
+    <maven-enforcer-plugin>3.6.1</maven-enforcer-plugin>
     <arch-unit-maven-plugin.version>4.0.2</arch-unit-maven-plugin.version>
     <jacoco-maven-plugin.version>0.8.13</jacoco-maven-plugin.version>
     <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
